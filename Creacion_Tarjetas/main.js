@@ -1,4 +1,12 @@
 
+//Variable para Generar Alertas, Menus Personalizados, etc.
+function vaciarDatosSalida() {
+  const sheet = SpreadsheetApp.openById('1pPWE_pS5tNcRabGIIymprfMo2TNWswZKNv5ovOZ95dY');
+  const p_datos_creacion_tarjetas = sheet.getSheetByName('Datos_Creacion_Tarjetas');
+
+  const ultimaFila = p_datos_creacion_tarjetas.getLastRow();
+  p_datos_creacion_tarjetas.getRange('A2:J' + ultimaFila).clearContent();
+}
 
 function duplicarDatos() {
     //Conectar Sheets a AppScript
