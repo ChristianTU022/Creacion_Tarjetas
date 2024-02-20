@@ -1,5 +1,10 @@
 
-//Variable para Generar Alertas, Menus Personalizados, etc.
+//Funcion para Generar Alertas, Menus Personalizados, etc.
+var ui = SpreadsheetApp.getUi();
+function onOpen(){
+  ui.createMenu('Menu Personalizado').addItem('Duplicar Los Datos', 'duplicarDatos').addToUi();
+}
+
 function vaciarDatosSalida() {
   const sheet = SpreadsheetApp.openById('1pPWE_pS5tNcRabGIIymprfMo2TNWswZKNv5ovOZ95dY');
   const p_datos_creacion_tarjetas = sheet.getSheetByName('Datos_Creacion_Tarjetas');
