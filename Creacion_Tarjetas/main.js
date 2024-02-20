@@ -5,7 +5,7 @@ function onOpen() {
   ui.createMenu('Menú Personalizado')
     .addItem('Duplicar Datos', 'duplicarDatos')
     .addItem('Limpiar Datos de Entrada', 'confirmarLimpiarDatosEntrada')
-    .addItem('Limpiar Datos de Salida', 'limpiarDatosSalida')
+    .addItem('Limpiar Datos de Salida', 'confirmarLimpiarDatosSalida')
     .addToUi();
 }
 
@@ -20,6 +20,19 @@ function confirmarLimpiarDatosEntrada() {
     limpiarDatosEntrada();
   }
 }
+
+function confirmarLimpiarDatosSalida() {
+  const ui = SpreadsheetApp.getUi();
+  const respuesta = ui.alert(
+    'Confirmación',
+    '¿Está seguro de que desea limpiar los datos de Salida? Este proceso limpiará cualquier tipo de dato.',
+    ui.ButtonSet.YES_NO);
+
+  if (respuesta == ui.Button.YES) {
+    limpiarDatosSalida();
+  }
+}
+
 
 //Funcion que permite Limpiar los datos del formulario sheets la hoja "Datos_Entrada_CT"
 function limpiarDatosEntrada() {
