@@ -1,5 +1,3 @@
-
-//Funcion para Generar Alertas, Menus Personalizados, etc.
 var ui = SpreadsheetApp.getUi();
 function onOpen(){
   ui.createMenu('Menu Personalizado').addItem('Duplicar Los Datos', 'duplicarDatos').addToUi();
