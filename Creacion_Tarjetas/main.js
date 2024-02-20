@@ -4,9 +4,21 @@ function onOpen() {
   const ui = SpreadsheetApp.getUi();
   ui.createMenu('Menú Personalizado')
     .addItem('Duplicar Datos', 'duplicarDatos')
-    .addItem('Limpiar Datos de Entrada', 'limpiarDatosEntrada')
+    .addItem('Limpiar Datos de Entrada', 'confirmarLimpiarDatosEntrada')
     .addItem('Limpiar Datos de Salida', 'limpiarDatosSalida')
     .addToUi();
+}
+
+function confirmarLimpiarDatosEntrada() {
+  const ui = SpreadsheetApp.getUi();
+  const respuesta = ui.alert(
+    'Confirmación',
+    '¿Está seguro de que desea limpiar los datos de entrada? Este proceso limpiará cualquier tipo de dato.',
+    ui.ButtonSet.YES_NO);
+
+  if (respuesta == ui.Button.YES) {
+    limpiarDatosEntrada();
+  }
 }
 
 //Funcion que permite Limpiar los datos del formulario sheets la hoja "Datos_Entrada_CT"
@@ -57,28 +69,44 @@ function duplicarDatos() {
       {
         p_Datos_Salida_CT.appendRow([fecha, descripcion, descripcionDetallada, tituloTarjeta, nombrePersona, lugar, grupoPlanificador, prioridad, tipoRiesgo]);
       }
+
+      //Sacar Codigo o iniciales del Titulo de la Tarjeta
       let valor_Cod_Titulo = p_Datos_Salida_CT.getRange('D' + fila).getValue();
       Logger.log(valor_Cod_Titulo + " Valor Tomado");
-      if (valor_Cod_Titulo === 'Condición básica' || valor_Cod_Titulo === 'Condiciones básicas') 
-      {
-        p_Datos_Salida_CT.getRange('K' + fila).setValue('CB');
-      } else if (valor_Cod_Titulo === 'Condición insegura') {
-        p_Datos_Salida_CT.getRange('K' + fila).setValue('CI');
-      } else if (valor_Cod_Titulo === 'Incidente') {
-        p_Datos_Salida_CT.getRange('K' + fila).setValue('I');
-      } else if (valor_Cod_Titulo === 'Acto inseguro' || valor_Cod_Titulo === 'Actos Inseguros') {
-        p_Datos_Salida_CT.getRange('K' + fila).setValue('AI');
-      } else if (valor_Cod_Titulo === 'Incidentes ambientales') {
-        p_Datos_Salida_CT.getRange('K' + fila).setValue('IA');
-      } else if (valor_Cod_Titulo === 'Acto Inseguro ambientales') {
-        p_Datos_Salida_CT.getRange('K' + fila).setValue('AIA');
-      } else if (valor_Cod_Titulo === 'Defecto') {
-        p_Datos_Salida_CT.getRange('K' + fila).setValue('DF');
-      } else if (valor_Cod_Titulo === 'Acto y/o comportamiento') {
-        p_Datos_Salida_CT.getRange('K' + fila).setValue('AC');
-      } else if (valor_Cod_Titulo === 'Condición de operación') {
-        p_Datos_Salida_CT.getRange('K' + fila).setValue('CO');
-      }    
+
+      switch (valor_Cod_Titulo) {
+        case 'Condición básica':
+        case 'Condiciones básicas':
+          p_Datos_Salida_CT.getRange('K' + fila).setValue('CB');
+          break;
+        case 'Condición insegura':
+          p_Datos_Salida_CT.getRange('K' + fila).setValue('CI');
+          break;
+        case 'Incidente':
+          p_Datos_Salida_CT.getRange('K' + fila).setValue('I');
+          break;
+        case 'Acto inseguro':
+        case 'Actos Inseguros':
+          p_Datos_Salida_CT.getRange('K' + fila).setValue('AI');
+          break;
+        case 'Incidentes ambientales':
+          p_Datos_Salida_CT.getRange('K' + fila).setValue('IA');
+          break;
+        case 'Acto Inseguro ambientales':
+          p_Datos_Salida_CT.getRange('K' + fila).setValue('AIA');
+          break;
+        case 'Defecto':
+          p_Datos_Salida_CT.getRange('K' + fila).setValue('DF');
+          break;
+        case 'Acto y/o comportamiento':
+          p_Datos_Salida_CT.getRange('K' + fila).setValue('AC');
+          break;
+        case 'Condición de operación':
+          p_Datos_Salida_CT.getRange('K' + fila).setValue('CO');
+          break;
+        default:
+          break;
+      }
     }
   }
 
