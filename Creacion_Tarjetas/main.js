@@ -3,13 +3,13 @@
 function onOpen() {
   const ui = SpreadsheetApp.getUi();
   ui.createMenu('Menú Personalizado')
-    .addItem('Duplicar Datos', 'duplicarDatos')
-    .addItem('Limpiar Datos de Entrada', 'confirmarLimpiarDatosEntrada')
-    .addItem('Limpiar Datos de Salida', 'confirmarLimpiarDatosSalida')
+    .addItem('Duplicar Datos', 'duplicateData')
+    .addItem('Limpiar Datos de Entrada', 'confirmClearDataEntry')
+    .addItem('Limpiar Datos de Salida', 'confirmClearDataOutput')
     .addToUi();
 }
 
-function confirmarLimpiarDatosEntrada() {
+function confirmClearDataEntry() {
   const ui = SpreadsheetApp.getUi();
   const respuesta = ui.alert(
     'Confirmación',
@@ -17,11 +17,11 @@ function confirmarLimpiarDatosEntrada() {
     ui.ButtonSet.YES_NO);
 
   if (respuesta == ui.Button.YES) {
-    limpiarDatosEntrada();
+    cleanDataInput();
   }
 }
 
-function confirmarLimpiarDatosSalida() {
+function confirmClearDataOutput() {
   const ui = SpreadsheetApp.getUi();
   const respuesta = ui.alert(
     'Confirmación',
@@ -29,93 +29,93 @@ function confirmarLimpiarDatosSalida() {
     ui.ButtonSet.YES_NO);
 
   if (respuesta == ui.Button.YES) {
-    limpiarDatosSalida();
+    cleanDataOutput();
   }
 }
 
 
-//Funcion que permite Limpiar los datos del formulario sheets la hoja "Datos_Entrada_CT"
-function limpiarDatosEntrada() {
+//Funcion que permite Limpiar los datos del formulario sheets la hoja "CT_Input_Data"
+function cleanDataInput() {
   const sheet = SpreadsheetApp.openById('1pPWE_pS5tNcRabGIIymprfMo2TNWswZKNv5ovOZ95dY');
-  const p_Datos_Salida_CT = sheet.getSheetByName('Datos_Entrada_CT');
-  const ultimaFila = p_Datos_Salida_CT.getLastRow();
-  p_Datos_Salida_CT.getRange('A2:AK' + ultimaFila).clearContent();
+  const p_CT_Output_Data = sheet.getSheetByName('CT_Input_Data');
+  const lastRow = p_CT_Output_Data.getLastRow();
+  p_CT_Output_Data.getRange('A2:AK' + lastRow).clearContent();
 }
-//Funcion que permite Limpiar los datos del formulario sheets la hoja "Datos_Salida_CT"
-function limpiarDatosSalida() {
+//Funcion que permite Limpiar los datos del formulario sheets la hoja "CT_Output_Data"
+function cleanDataOutput() {
   const sheet = SpreadsheetApp.openById('1pPWE_pS5tNcRabGIIymprfMo2TNWswZKNv5ovOZ95dY');
-  const p_Datos_Salida_CT = sheet.getSheetByName('Datos_Salida_CT');
+  const p_CT_Output_Data = sheet.getSheetByName('CT_Output_Data');
 
-  const ultimaFila = p_Datos_Salida_CT.getLastRow();
-  p_Datos_Salida_CT.getRange('A2:K' + ultimaFila).clearContent();
+  const lastRow = p_CT_Output_Data.getLastRow();
+  p_CT_Output_Data.getRange('A2:K' + lastRow).clearContent();
 }
 
 
-function duplicarDatos() {
+function duplicateData() {
     //Conectar Sheets a AppScript
     const sheet = SpreadsheetApp.openById('1pPWE_pS5tNcRabGIIymprfMo2TNWswZKNv5ovOZ95dY');
     //Conectar Hojas especificas
-    const p_Datos_Entrada_CT = sheet.getSheetByName('Datos_Entrada_CT');
-    const p_Datos_Salida_CT = sheet.getSheetByName('Datos_Salida_CT');
+    const p_CT_Input_Data = sheet.getSheetByName('CT_Input_Data');
+    const p_CT_Output_Data = sheet.getSheetByName('CT_Output_Data');
     
-    const ultimaFila = p_Datos_Entrada_CT.getLastRow();
+    const lastRow = p_CT_Input_Data.getLastRow();
     
     //Saca Los datos especificos del Archivo/hoja de Entrada al archivo/hoja de salida
-    for (let fila = 2; fila <= ultimaFila; fila++) 
+    for (let row = 2; row <= lastRow; row++) 
     {
-      const fecha = p_Datos_Entrada_CT.getRange('A' + fila).getValue();
-      const descripcion = p_Datos_Entrada_CT.getRange('F' + fila).getValue();
-      const descripcionDetallada = p_Datos_Entrada_CT.getRange('G' + fila).getValue();
-      const tituloTarjeta = p_Datos_Entrada_CT.getRange('I' + fila).getValue() + '' +
-                            p_Datos_Entrada_CT.getRange('J' + fila).getValue() + '' +
-                            p_Datos_Entrada_CT.getRange('K' + fila).getValue() + '' +
-                            p_Datos_Entrada_CT.getRange('L' + fila).getValue() + '' +
-                            p_Datos_Entrada_CT.getRange('N' + fila).getValue();
-      const nombrePersona = p_Datos_Entrada_CT.getRange('D' + fila).getValue();
-      const lugar = p_Datos_Entrada_CT.getRange('C' + fila).getValue();
-      const grupoPlanificador = p_Datos_Entrada_CT.getRange('O' + fila).getValue();
-      const prioridad = p_Datos_Entrada_CT.getRange('T' + fila).getValue();
-      const tipoRiesgo = p_Datos_Entrada_CT.getRange('H' + fila).getValue();
+      const date = p_CT_Input_Data.getRange('A' + row).getValue();
+      const short_description = p_CT_Input_Data.getRange('F' + row).getValue();
+      const long_description = p_CT_Input_Data.getRange('G' + row).getValue();
+      const card_title = p_CT_Input_Data.getRange('I' + row).getValue() + '' +
+                            p_CT_Input_Data.getRange('J' + row).getValue() + '' +
+                            p_CT_Input_Data.getRange('K' + row).getValue() + '' +
+                            p_CT_Input_Data.getRange('L' + row).getValue() + '' +
+                            p_CT_Input_Data.getRange('N' + row).getValue();
+      const person_name = p_CT_Input_Data.getRange('D' + row).getValue();
+      const place = p_CT_Input_Data.getRange('C' + row).getValue();
+      const plannerGroup = p_CT_Input_Data.getRange('O' + row).getValue();
+      const priority = p_CT_Input_Data.getRange('T' + row).getValue();
+      const riskType = p_CT_Input_Data.getRange('H' + row).getValue();
        
 
-      if (fecha !== '') 
+      if (date !== '') 
       {
-        p_Datos_Salida_CT.appendRow([fecha, descripcion, descripcionDetallada, tituloTarjeta, nombrePersona, lugar, grupoPlanificador, prioridad, tipoRiesgo]);
+        p_CT_Output_Data.appendRow([date, short_description, long_description, card_title, person_name, place, plannerGroup, priority, riskType]);
       }
 
       //Sacar Codigo o iniciales del Titulo de la Tarjeta
-      let valor_Cod_Titulo = p_Datos_Salida_CT.getRange('D' + fila).getValue();
+      let valor_Cod_Titulo = p_CT_Output_Data.getRange('D' + row).getValue();
       Logger.log(valor_Cod_Titulo + " Valor Tomado");
 
       switch (valor_Cod_Titulo) {
         case 'Condición básica':
         case 'Condiciones básicas':
-          p_Datos_Salida_CT.getRange('K' + fila).setValue('CB');
+          p_CT_Output_Data.getRange('K' + row).setValue('CB');
           break;
         case 'Condición insegura':
-          p_Datos_Salida_CT.getRange('K' + fila).setValue('CI');
+          p_CT_Output_Data.getRange('K' + row).setValue('CI');
           break;
         case 'Incidente':
-          p_Datos_Salida_CT.getRange('K' + fila).setValue('I');
+          p_CT_Output_Data.getRange('K' + row).setValue('I');
           break;
         case 'Acto inseguro':
         case 'Actos Inseguros':
-          p_Datos_Salida_CT.getRange('K' + fila).setValue('AI');
+          p_CT_Output_Data.getRange('K' + row).setValue('AI');
           break;
         case 'Incidentes ambientales':
-          p_Datos_Salida_CT.getRange('K' + fila).setValue('IA');
+          p_CT_Output_Data.getRange('K' + row).setValue('IA');
           break;
         case 'Acto Inseguro ambientales':
-          p_Datos_Salida_CT.getRange('K' + fila).setValue('AIA');
+          p_CT_Output_Data.getRange('K' + row).setValue('AIA');
           break;
         case 'Defecto':
-          p_Datos_Salida_CT.getRange('K' + fila).setValue('DF');
+          p_CT_Output_Data.getRange('K' + row).setValue('DF');
           break;
         case 'Acto y/o comportamiento':
-          p_Datos_Salida_CT.getRange('K' + fila).setValue('AC');
+          p_CT_Output_Data.getRange('K' + row).setValue('AC');
           break;
         case 'Condición de operación':
-          p_Datos_Salida_CT.getRange('K' + fila).setValue('CO');
+          p_CT_Output_Data.getRange('K' + row).setValue('CO');
           break;
         default:
           break;
