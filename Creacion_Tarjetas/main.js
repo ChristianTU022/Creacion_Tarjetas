@@ -56,11 +56,39 @@ function cleanDataOutput() {
   const p_CT_Output_Data = sheet.getSheetByName('CT_Output_Data');
 
   const lastRow = p_CT_Output_Data.getLastRow();
-  p_CT_Output_Data.getRange('A2:K' + lastRow).clearContent();
+  p_CT_Output_Data.getRange('A2:Q' + lastRow).clearContent();
 }
 
-// function get_Cod_Title() {
-// }
+//Funcion que Saca Codigo o iniciales del Titulo de la Tarjeta
+function get_Cod_Title(sheet, row) {
+  let cod_Title_Value = sheet.getRange('D' + row).getValue();
+  Logger.log(cod_Title_Value + " Valor Tomado");
+  switch (cod_Title_Value) 
+  {
+    case 'Condición básica':
+    case 'Condiciones básicas':
+      return 'CB';
+    case 'Condición insegura':
+      return 'CI';
+    case 'Incidente':
+      return 'I';
+    case 'Acto inseguro':
+    case 'Actos Inseguros':
+      return 'AI';
+    case 'Incidentes ambientales':
+      return 'IA';
+    case 'Acto Inseguro ambientales':
+      return 'AIA';
+    case 'Defecto':
+      return 'DF';
+    case 'Acto y/o comportamiento':
+      return 'AC';
+    case 'Condición de operación':
+      return 'CO';
+    default:
+      return '';
+  }
+}
 
 // function concatenateColumnsTitle() {
 
@@ -98,43 +126,10 @@ function duplicateData() {
       p_CT_Output_Data.appendRow([date, short_description, long_description, card_title, person_name, place, plannerGroup, priority, riskType]);
     }
 
-    //Sacar Codigo o iniciales del Titulo de la Tarjeta
-    let cod_Title_Value = p_CT_Output_Data.getRange('D' + row).getValue();
-    Logger.log(cod_Title_Value + " Valor Tomado");
-    switch (cod_Title_Value) 
-    {
-      case 'Condición básica':
-      case 'Condiciones básicas':
-        p_CT_Output_Data.getRange('K' + row).setValue('CB');
-        break;
-      case 'Condición insegura':
-        p_CT_Output_Data.getRange('K' + row).setValue('CI');
-        break;
-      case 'Incidente':
-        p_CT_Output_Data.getRange('K' + row).setValue('I');
-        break;
-      case 'Acto inseguro':
-      case 'Actos Inseguros':
-        p_CT_Output_Data.getRange('K' + row).setValue('AI');
-        break;
-      case 'Incidentes ambientales':
-        p_CT_Output_Data.getRange('K' + row).setValue('IA');
-        break;
-      case 'Acto Inseguro ambientales':
-        p_CT_Output_Data.getRange('K' + row).setValue('AIA');
-        break;
-      case 'Defecto':
-        p_CT_Output_Data.getRange('K' + row).setValue('DF');
-        break;
-      case 'Acto y/o comportamiento':
-        p_CT_Output_Data.getRange('K' + row).setValue('AC');
-        break;
-      case 'Condición de operación':
-        p_CT_Output_Data.getRange('K' + row).setValue('CO');
-        break;
-      default:
-        break;
-    }
+    //Uso de La funcion get_Cod_Tittle 
+    const cod_Title_Value = get_Cod_Title(p_CT_Output_Data, row);
+    p_CT_Output_Data.getRange('K' + row).setValue(cod_Title_Value);
+
     const columnKValue = p_CT_Output_Data.getRange('K' + row).getValue();
     const columnBValue = p_CT_Output_Data.getRange('B' + row).getValue();
     const concatenatedValue = columnKValue + ' ' + columnBValue;
