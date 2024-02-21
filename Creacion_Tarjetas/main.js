@@ -104,6 +104,8 @@ function duplicateData() {
 
     //Se llama a la funcion concatenateColumnsTitle
     concatenateColumnsTitle(p_CT_Output_Data, row);
+    //Se llama a la funcion assignCodesPlace
+    assignCodesPlace(p_CT_Output_Data);
   }
 }
 
@@ -144,4 +146,100 @@ function concatenateColumnsTitle(sheet, row) {
   const columnBValue = sheet.getRange('B' + row).getValue();
   const concatenatedValue = columnKValue + ' ' + columnBValue;
   sheet.getRange('L' + row).setValue(concatenatedValue);
+}
+
+function assignCodesPlace(sheet) {
+  const lastRow = sheet.getLastRow();
+  
+  for (let row = 2; row <= lastRow; row++) {
+    const columnFValue = sheet.getRange('F' + row).getValue();
+    let codeM = '';
+    let codeN = '';
+
+    switch (columnFValue) {
+      case 'Logistics - Raw Materials':
+        codeM = 'DR15-ALMG';
+        codeN = '10024537';
+        break;
+      case 'Logistics - General Warehouse':
+        codeM = 'DR15-ALMG';
+        break;
+      case 'Manufacturing - Mill':
+        codeM = 'DR15-MOL1';
+        break;
+      case 'Manufacturing - Pastificio':
+        codeM = 'DR15-PAST';
+        break;
+      case 'Manufacturing - Packaging':
+        codeM = 'DR15-EMPA';
+        break;
+      case 'Manufacturing Information Building':
+        codeM = 'DR15-PAST-OEPA';
+        break;
+      case 'Engineering and Assemblies':
+        codeM = 'DR15-TMTO-INGE';
+        break;
+      case 'Technical Services':
+        codeM = 'DR15-TMTO';
+        break;
+      case 'SDM':
+        codeM = 'DR15-PAST-SDME';
+        break;
+      case 'Special Packaging (CEMPA)':
+        codeM = 'DR15-EMPA-EESP';
+        break;
+      case 'Logistics CEDI A':
+        codeM = 'DR15-OPER-CEDI';
+        break;
+      case 'Logistics CEDI B':
+        codeM = 'DR15-PAST-CD_B';
+        break;
+      case 'Integral Quality':
+        codeM = 'DR15-PAST-OCAL';
+        break;
+      case 'Quality Laboratory':
+        codeM = 'DR15-LABS-LCAL';
+        break;
+      case 'R&D Laboratory':
+        codeM = 'DR15-LABS-INV';
+        break;
+      case 'Administrative Building':
+        codeM = 'DR15-EADM';
+        break;
+      case 'Marketing':
+        codeM = 'DR15-EADM-OEAD';
+        break;
+      case 'Exteriors':
+        codeM = 'DR15-EXTE';
+        break;
+      case 'Water Treatment Plants (PTAR - PTAP)':
+        codeM = 'DR15-PTAR';
+        break;
+      case 'Industrial Surplus Warehouse':
+        codeM = 'DR15-CRES';
+        break;
+      case 'Contractors Area':
+        codeM = 'DR15-ZCNT';
+        break;
+      case 'Gatehouse':
+        codeM = 'DR15-PORT';
+        break;
+      case 'Casino':
+        codeM = 'DR15-EADM-CSNO';
+        break;
+      case 'Battery Room':
+        codeM = 'DR15-OPER-CEDI';
+        break;
+      case 'Employee Sales Room':
+        codeM = 'DR15-OPER-CEDI';
+        break;
+      default:
+        break;
+    }
+
+    sheet.getRange('M' + row).setValue(codeM);
+    if (codeN !== '') {
+      sheet.getRange('N' + row).setValue(codeN);
+    }
+  }
 }
