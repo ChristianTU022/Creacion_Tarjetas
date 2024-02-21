@@ -59,7 +59,7 @@ function cleanDataOutput() {
   p_CT_Output_Data.getRange('A2:Q' + lastRow).clearContent();
 }
 
-//Funcion que Saca Codigo o iniciales del Titulo de la Tarjeta
+//Funcion que Saca Codigo o Iniciales para Columna COD_CARD_TITLE
 function get_Cod_Title(sheet, row) {
   let cod_Title_Value = sheet.getRange('D' + row).getValue();
   Logger.log(cod_Title_Value + " Valor Tomado");
@@ -90,9 +90,14 @@ function get_Cod_Title(sheet, row) {
   }
 }
 
-// function concatenateColumnsTitle() {
+//Funcion que Concatena 2 Columnas para Obtener el titulo completo de la Tarjeta = Columna COD_SHORT_DESC_TITLE
+function concatenateColumnsTitle(sheet, row) {
+  const columnKValue = sheet.getRange('K' + row).getValue();
+  const columnBValue = sheet.getRange('B' + row).getValue();
+  const concatenatedValue = columnKValue + ' ' + columnBValue;
+  sheet.getRange('L' + row).setValue(concatenatedValue);
+}
 
-// }
 //Funcion Para Duplicar los Datos
 function duplicateData() {
   //Conectar Sheets a AppScript
@@ -126,14 +131,12 @@ function duplicateData() {
       p_CT_Output_Data.appendRow([date, short_description, long_description, card_title, person_name, place, plannerGroup, priority, riskType]);
     }
 
-    //Uso de La funcion get_Cod_Tittle 
+    //Se llama a La funcion get_Cod_Tittle
     const cod_Title_Value = get_Cod_Title(p_CT_Output_Data, row);
     p_CT_Output_Data.getRange('K' + row).setValue(cod_Title_Value);
 
-    const columnKValue = p_CT_Output_Data.getRange('K' + row).getValue();
-    const columnBValue = p_CT_Output_Data.getRange('B' + row).getValue();
-    const concatenatedValue = columnKValue + ' ' + columnBValue;
-    p_CT_Output_Data.getRange('L' + row).setValue(concatenatedValue);
+    //Se llama a la funcion concatenateColumnsTitle
+    concatenateColumnsTitle(p_CT_Output_Data, row);
   }
 }
 
