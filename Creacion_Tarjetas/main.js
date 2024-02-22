@@ -120,6 +120,9 @@ function duplicateData() {
 
     // Se llama a la función assignCodesPG
     assignCodesPG(p_CT_Output_Data, row);
+
+    // Se llama a la función assignCodesRisk
+    assignCodesRisk(p_CT_Output_Data, row);
   }
 }
 
@@ -150,7 +153,7 @@ function get_Cod_Title(sheet, row) {
     case 'Condición de operación':
       return 'CO';
     default:
-      return '';
+      return 'Error_Cod_Title';
   }
 }
 
@@ -275,9 +278,42 @@ function assignCodesPG(sheet, row) {
       codeN = 'M11';
       break;
     default:
-      break;
+      return 'Error_Cod_PG';
   }
 
   sheet.getRange('N' + row).setValue(codeN);
   sheet.getRange('O' + row).setValue(codeO);
+}
+
+//Funcion Para Asociar tipos de riesgo un Codigo "COD_RISK" y imprimirlo en la columna especificada
+function assignCodesRisk(sheet, row) {
+  const valueI = sheet.getRange('I' + row).getValue();
+  let codeQ = '';
+
+  switch (valueI) {
+    case 'Riesgo De Falla':
+    case 'Riesgo de falla de equipo':
+      codeQ = '0010';
+      break;
+    case 'Riesgo De Calidad':
+    case 'Riesgo de calidad':
+      codeQ = '0020';
+      break;
+    case 'Riesgo A las Personas':
+    case 'Riesgo a las personas':
+      codeQ = '0030';
+      break;
+    case 'Riesgo Ambiental':
+    case 'Riesgo ambiental':
+      codeQ = '0040';
+      break;
+    case 'Riesgo Inocuidad':
+    case 'Riesgo de inocuidad':
+      codeQ = '0050';
+      break;
+    default:
+      return 'Error_Cod_Risk';
+  }
+
+  sheet.getRange('Q' + row).setValue(codeQ);
 }
