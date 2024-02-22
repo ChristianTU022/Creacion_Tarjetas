@@ -115,8 +115,11 @@ function duplicateData() {
     //Se llama a la funcion concatenateColumnsTitle
     concatenateColumnsTitle(p_CT_Output_Data, row);
 
-    //Se llama a la funcion assignCodes
-    assignCodes(p_CT_Output_Data, row);
+    //Se llama a la funcion assignCodesPlace
+    assignCodesPlace(p_CT_Output_Data, row);
+
+    // Se llama a la función assignCodesPG
+    assignCodesPG(p_CT_Output_Data, row);
   }
 }
 
@@ -159,7 +162,8 @@ function concatenateColumnsTitle(sheet, row) {
   sheet.getRange('L' + row).setValue(concatenatedValue);
 }
 
-function assignCodes(sheet) {
+//Funcion Para Asociar Los lugares a un Codigo cod_place y imprimirlo en la columna especifica
+function assignCodesPlace(sheet) {
   const descriptions = [
     ["Logística - Materias Primas", "DR15-ALMG"/*, mas codigos y especificos*/],
     ["Logística -  Almacén General", "DR15-ALMG"],
@@ -200,4 +204,80 @@ function assignCodes(sheet) {
       // }
     }
   }
+}
+
+//Funcion Para Asociar Los grupos de planeacion a un Codigo "COD_PLANNER_GROUP" y imprimirlo en las columnas especificadas 
+function assignCodesPG(sheet, row) {
+  const valueG = sheet.getRange('G' + row).getValue();
+  let codeN = '';
+  let codeO = '';
+
+  switch (valueG) {
+    case 'Jefe de ingeniería y montajes':
+      codeN = 'M12';
+      break;
+    case 'Obras civiles':
+      codeN = 'M06';
+      codeO = 'CONTCVIL';
+      break;
+    case 'Jefe Aseguramiento de calidad':
+      codeN = 'M07';
+      codeO = 'ANLICAL';
+      break;
+    case 'Coordinador de gestión ambiental':
+      codeN = 'M07';
+      codeO = 'JEFEGAMB';
+      break;
+    case 'Equipo SST':
+      codeN = 'M08';
+      codeO = 'COORSST';
+      break;
+    case 'Jefe servicios administrativos':
+      codeN = 'M12';
+      break;
+    case 'Jefe de empaque':
+      codeN = 'M03';
+      break;
+    case 'Jefe de pastificio':
+      codeN = 'M02';
+      break;
+    case 'Jefe de molino':
+      codeN = 'M01';
+      break;
+    case 'Jefe CEDI':
+      codeN = 'M10';
+      codeO = 'JEFECEDI';
+      break;
+    case 'Jefe materias primas':
+      codeN = 'M13';
+      break;
+    case 'Jefe de almacén general':
+      codeN = 'M14';
+      break;
+    case 'Metrología':
+      codeN = 'M05';
+      break;
+    case 'Servicios Industriales':
+      codeN = 'M04';
+      break;
+    case 'Autónomo':
+      codeN = 'M09';
+      break;
+    case 'Técnico eléctrico':
+      codeN = 'M12';
+      codeO = 'JEFIYM02';
+      break;
+    case 'Técnico mecánico':
+      codeN = 'M12';
+      codeO = 'JEFIYM01';
+      break;
+    case 'Sistema de Dosificación y Mezclas':
+      codeN = 'M11';
+      break;
+    default:
+      break;
+  }
+
+  sheet.getRange('N' + row).setValue(codeN);
+  sheet.getRange('O' + row).setValue(codeO);
 }
