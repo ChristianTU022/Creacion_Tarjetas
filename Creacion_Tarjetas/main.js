@@ -5,9 +5,9 @@ function onOpen() {
     .addItem('Duplicar Datos', 'duplicateData')
     .addItem('Limpiar Datos de Entrada', 'confirmClearDataEntry')
     .addItem('Limpiar Datos de Salida', 'confirmClearDataOutput')
+    .addItem('Limpiar Todo', 'cleanAll')
     .addToUi();
 }
-
 //Funcion para Conectarse al Sheet
 function conectionSheets() {
    //Conectar Sheets a AppScript
@@ -20,53 +20,63 @@ function conectionSheets() {
   return { sheet, p_CT_Input_Data, p_CT_Output_Data };
 }
 
-//Funcion para Generar Alertas, Menus Personalizados, etc.
-function onOpen() {
-  const ui = SpreadsheetApp.getUi();
-  ui.createMenu('Menú Personalizado')
-    .addItem('Duplicar Datos', 'duplicateData')
-    .addItem('Limpiar Datos de Entrada', 'confirmClearDataEntry')
-    .addItem('Limpiar Datos de Salida', 'confirmClearDataOutput')
-    .addToUi();
-}
-//Funcion Para Confirmar Limpieza de Datos de Entrada
-function confirmClearDataEntry() {
+//Funcion Para Confirmar Limpieza de Datos
+function confirmAndCleanData(sheetName, confirmationMessage, lastColumn) {
   const ui = SpreadsheetApp.getUi();
   const respuesta = ui.alert(
     'Confirmación',
-    '¿Está seguro de que desea limpiar los datos de entrada? Este proceso limpiará cualquier tipo de dato.',
+    confirmationMessage,
     ui.ButtonSet.YES_NO);
 
   if (respuesta == ui.Button.YES) {
-    cleanDataInput();
-  }
-}
-
-//Funcion Para Confirmar Limpieza de Datos de Salida
-function confirmClearDataOutput() {
-  const ui = SpreadsheetApp.getUi();
-  const respuesta = ui.alert(
-    'Confirmación',
-    '¿Está seguro de que desea limpiar los datos de Salida? Este proceso limpiará cualquier tipo de dato.',
-    ui.ButtonSet.YES_NO);
-
-  if (respuesta == ui.Button.YES) {
-    cleanDataOutput();
+    const { sheet } = conectionSheets();
+    const targetSheet = sheet.getSheetByName(sheetName);
+    const lastRow = targetSheet.getLastRow();
+    const range = 'A2:' + lastColumn + lastRow;
+    targetSheet.getRange(range).clearContent();
   }
 }
 
 //Funcion que permite Limpiar los datos del formulario sheets la hoja "CT_Input_Data"
-function cleanDataInput() {
-  const {p_CT_Input_Data} = conectionSheets();
-  const lastRow = p_CT_Input_Data.getLastRow();
-  p_CT_Input_Data.getRange('A2:AK' + lastRow).clearContent();
+function confirmClearDataEntry() {
+  //Se debe especificar hasta el numero de Columna que se desea eliminar (ultimo parametro)
+  confirmAndCleanData('CT_Input_Data', '¿Está seguro de que desea limpiar los datos de "Entrada"?\n\nEste proceso limpiará cualquier tipo de dato', 'AK');
 }
 
 //Funcion que permite Limpiar los datos del formulario sheets la hoja "CT_Output_Data"
-function cleanDataOutput() {
-  const {p_CT_Output_Data} = conectionSheets();
-  const lastRow = p_CT_Output_Data.getLastRow();
-  p_CT_Output_Data.getRange('A2:Q' + lastRow).clearContent();
+function confirmClearDataOutput() {
+  //Se debe especificar hasta el numero de Columna que se desea eliminar (ultimo parametro)
+  confirmAndCleanData('CT_Output_Data', '¿Está seguro de que desea limpiar los datos de "Salida"?\n\nEste proceso limpiará cualquier tipo de dato.', 'Q');
+}
+
+
+
+//Funcion para Limpiar los dos archivos
+function cleanAll() {
+  const ui = SpreadsheetApp.getUi();
+  const respuesta = ui.alert(
+    'Confirmación',
+    '¿Está seguro de que desea limpiar todas las hojas?\n\nEste proceso limpiará cualquier tipo de dato en las hojas "CT_Input_Data" y "CT_Output_Data".',
+    ui.ButtonSet.YES_NO
+  );
+
+  if (respuesta == ui.Button.YES) {
+    const { sheet } = conectionSheets();
+    const inputSheet = sheet.getSheetByName('CT_Input_Data');
+    const outputSheet = sheet.getSheetByName('CT_Output_Data');
+    const lastRowInput = inputSheet.getLastRow();
+    const lastRowOutput = outputSheet.getLastRow();
+
+    // Limpiar hoja de Input
+    if (lastRowInput > 1) { // Verificar que haya datos en la hoja de entrada
+      inputSheet.getRange('A2:AK' + lastRowInput).clearContent();
+    }
+
+    // Limpiar hoja de Output
+    if (lastRowOutput > 1) { // Verificar que haya datos en la hoja de salida
+      outputSheet.getRange('A2:Q' + lastRowOutput).clearContent();
+    }
+  }
 }
 
 //Funcion Para Duplicar los Datos
