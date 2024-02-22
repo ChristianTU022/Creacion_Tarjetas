@@ -104,8 +104,9 @@ function duplicateData() {
 
     //Se llama a la funcion concatenateColumnsTitle
     concatenateColumnsTitle(p_CT_Output_Data, row);
-    //Se llama a la funcion assignCodesPlace
-    assignCodesPlace(p_CT_Output_Data);
+
+    //Se llama a la funcion assignCodes
+    assignCodes(p_CT_Output_Data, row);
   }
 }
 
@@ -148,98 +149,45 @@ function concatenateColumnsTitle(sheet, row) {
   sheet.getRange('L' + row).setValue(concatenatedValue);
 }
 
-function assignCodesPlace(sheet) {
+function assignCodes(sheet) {
+  const descriptions = [
+    ["Logística - Materias Primas", "DR15-ALMG"/*, mas codigos y especificos*/],
+    ["Logística -  Almacén General", "DR15-ALMG"],
+    ["Manufactura - Molino", "DR15-MOL1"],
+    ["Manufactura - Pastificio", "DR15-PAST"],
+    ["Manufactura - Empaque", "DR15-EMPA"],
+    ["Edificio Información Manufactura", "DR15-PAST-OEPA"],
+    ["Ingeniería y Montajes", "DR15-TMTO-INGE"],
+    ["Servicios Técnicos", "DR15-TMTO"],
+    ["SDM", "DR15-PAST-SDME"],
+    ["Empaques especiales (CEMPA)", "DR15-EMPA-EESP"],
+    ["Logística CEDI A", "DR15-OPER-CEDI"],
+    ["Logística CEDI B", "DR15-PAST-CD_B"],
+    ["Calidad Integral", "DR15-PAST-OCAL"],
+    ["Laboratorio de Calidad", "DR15-LABS-LCAL"],
+    ["Laboratorio I+D", "DR15-LABS-INV"],
+    ["Edificio Administrativo", "DR15-EADM"],
+    ["Mercadeo", "DR15-EADM-OEAD"],
+    ["Exteriores", "DR15-EXTE"],
+    ["Plantas de tratamiento de aguas (PTAR - PTAP)", "DR15-PTAR"],
+    ["Bodega de excedentes industriales", "DR15-CRES"],
+    ["Zona de contratistas", "DR15-ZCNT"],
+    ["Portería", "DR15-PORT"],
+    ["Casino", "DR15-EADM-CSNO"],
+    ["Cuarto de Baterías", "DR15-OPER-CEDI"],
+    ["Cuarto Venta de Empleados", "DR15-OPER-CEDI"],
+  ];
+
   const lastRow = sheet.getLastRow();
-  
+
   for (let row = 2; row <= lastRow; row++) {
-    const columnFValue = sheet.getRange('F' + row).getValue();
-    let codeM = '';
-    let codeN = '';
-
-    switch (columnFValue) {
-      case 'Logistics - Raw Materials':
-        codeM = 'DR15-ALMG';
-        codeN = '10024537';
-        break;
-      case 'Logistics - General Warehouse':
-        codeM = 'DR15-ALMG';
-        break;
-      case 'Manufacturing - Mill':
-        codeM = 'DR15-MOL1';
-        break;
-      case 'Manufacturing - Pastificio':
-        codeM = 'DR15-PAST';
-        break;
-      case 'Manufacturing - Packaging':
-        codeM = 'DR15-EMPA';
-        break;
-      case 'Manufacturing Information Building':
-        codeM = 'DR15-PAST-OEPA';
-        break;
-      case 'Engineering and Assemblies':
-        codeM = 'DR15-TMTO-INGE';
-        break;
-      case 'Technical Services':
-        codeM = 'DR15-TMTO';
-        break;
-      case 'SDM':
-        codeM = 'DR15-PAST-SDME';
-        break;
-      case 'Special Packaging (CEMPA)':
-        codeM = 'DR15-EMPA-EESP';
-        break;
-      case 'Logistics CEDI A':
-        codeM = 'DR15-OPER-CEDI';
-        break;
-      case 'Logistics CEDI B':
-        codeM = 'DR15-PAST-CD_B';
-        break;
-      case 'Integral Quality':
-        codeM = 'DR15-PAST-OCAL';
-        break;
-      case 'Quality Laboratory':
-        codeM = 'DR15-LABS-LCAL';
-        break;
-      case 'R&D Laboratory':
-        codeM = 'DR15-LABS-INV';
-        break;
-      case 'Administrative Building':
-        codeM = 'DR15-EADM';
-        break;
-      case 'Marketing':
-        codeM = 'DR15-EADM-OEAD';
-        break;
-      case 'Exteriors':
-        codeM = 'DR15-EXTE';
-        break;
-      case 'Water Treatment Plants (PTAR - PTAP)':
-        codeM = 'DR15-PTAR';
-        break;
-      case 'Industrial Surplus Warehouse':
-        codeM = 'DR15-CRES';
-        break;
-      case 'Contractors Area':
-        codeM = 'DR15-ZCNT';
-        break;
-      case 'Gatehouse':
-        codeM = 'DR15-PORT';
-        break;
-      case 'Casino':
-        codeM = 'DR15-EADM-CSNO';
-        break;
-      case 'Battery Room':
-        codeM = 'DR15-OPER-CEDI';
-        break;
-      case 'Employee Sales Room':
-        codeM = 'DR15-OPER-CEDI';
-        break;
-      default:
-        break;
-    }
-
-    sheet.getRange('M' + row).setValue(codeM);
-    if (codeN !== '') {
-      sheet.getRange('N' + row).setValue(codeN);
+    const description = sheet.getRange('F' + row).getValue();
+    const codeInfo = descriptions.find(entry => entry[0] == description);
+    if (codeInfo) {
+      sheet.getRange('M' + row).setValue(codeInfo[1]);
+      // if (codeInfo.length > 2) {
+      //   sheet.getRange('N' + row).setValue(codeInfo[2]);
+      // }
     }
   }
 }

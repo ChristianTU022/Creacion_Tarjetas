@@ -1,4 +1,4 @@
-Logística - Materias Primas  // DR15-ALMG  //S 10024537
+Logística - Materias Primas  // DR15-ALMG
 Logística -  Almacén General  // DR15-ALMG
 Manufactura - Molino   // DR15-MOL1
 Manufactura - Pastificio  // DR15-PAST
@@ -23,3 +23,6 @@ Portería  // DR15-PORT
 Casino  // DR15-EADM-CSNO
 Cuarto de Baterías  // DR15-OPER-CEDI
 Cuarto Venta de Empleados  // DR15-OPER-CEDI
+
+
+
