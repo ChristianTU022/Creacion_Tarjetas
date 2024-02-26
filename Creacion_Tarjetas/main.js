@@ -123,6 +123,9 @@ function duplicateData() {
 
     // Se llama a la función assignCodesRisk
     assignCodesRisk(p_CT_Output_Data, row);
+    
+    // Se llama a la función assignCodesPriority
+    assignCodesPriority(p_CT_Output_Data, row);
   }
 }
 
@@ -316,4 +319,27 @@ function assignCodesRisk(sheet, row) {
   }
 
   sheet.getRange('Q' + row).setValue(codeQ);
+}
+
+//Funcion para Sacar codigo o iniciales para columna Cod_Priority 
+function assignCodesPriority(sheet, row) {
+  const riskType = sheet.getRange('H' + row).getValue();
+  let priorityCode = '';
+
+  switch (riskType) {
+    case 'A - Alta':
+      priorityCode = 'H';
+      break;
+    case 'B - Media':
+      priorityCode = 'L';
+      break;
+    case 'C - Baja':
+      priorityCode = 'N';
+      break;
+    default:
+      return 'Error_Cod_Priority';
+      break;
+  }
+
+  sheet.getRange('P' + row).setValue(priorityCode);
 }
