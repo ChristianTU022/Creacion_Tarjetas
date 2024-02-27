@@ -1,18 +1,18 @@
-Jefe de ingeniería y montajes       // M12
+Jefe de ingeniería y montajes       // M12  // 
 Obras civiles                       // M06  // CONTCVIL
 Jefe Aseguramiento de calidad       // M07  // ANLICAL
 Coordinador de gestión ambiental    // M07  // JEFEGAMB
 Equipo SST                          // M08  // COORSST
-Jefe servicios administrativos      // M12
-Jefe de empaque                     // M03
-Jefe de pastificio                  // M02
-Jefe de molino                      // M01
+Jefe servicios administrativos      // M12  // 
+Jefe de empaque                     // M03  // 
+Jefe de pastificio                  // M02  // 
+Jefe de molino                      // M01  // 
 Jefe CEDI                           // M10  // JEFECEDI
-Jefe materias primas                // M13
-Jefe de almacén general             // M14
-Metrología                          // M05
-Servicios Industriales              // M04
-Autónomo                            // M09
+Jefe materias primas                // M13  // 
+Jefe de almacén general             // M14  // 
+Metrología                          // M05  // 
+Servicios Industriales              // M04  // 
+Autónomo                            // M09  // 
 Técnico eléctrico                   // M12  // JEFIYM02
 Técnico mecánico                    // M12  // JEFIYM01
-Sistema de Dosificación y Mezclas   // M11
+Sistema de Dosificación y Mezclas   // M11  // 

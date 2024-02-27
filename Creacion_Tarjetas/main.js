@@ -6,6 +6,7 @@ function onOpen() {
     .addItem('Limpiar Datos de Entrada', 'confirmClearDataEntry')
     .addItem('Limpiar Datos de Salida', 'confirmClearDataOutput')
     .addItem('Limpiar Todo', 'cleanAll')
+    .addItem('Convertir Salida a Excel', 'convertToExcel')
     .addToUi();
 }
 //Funcion para Conectarse al Sheet
@@ -296,23 +297,23 @@ function assignCodesRisk(sheet, row) {
   switch (valueI) {
     case 'Riesgo De Falla':
     case 'Riesgo de falla de equipo':
-      codeQ = '0010';
+      codeQ = '*0010';
       break;
     case 'Riesgo De Calidad':
     case 'Riesgo de calidad':
-      codeQ = '0020';
+      codeQ = '*0020';
       break;
     case 'Riesgo A las Personas':
     case 'Riesgo a las personas':
-      codeQ = '0030';
+      codeQ = '*0030';
       break;
     case 'Riesgo Ambiental':
     case 'Riesgo ambiental':
-      codeQ = '0040';
+      codeQ = '*0040';
       break;
     case 'Riesgo Inocuidad':
     case 'Riesgo de inocuidad':
-      codeQ = '0050';
+      codeQ = '*0050';
       break;
     default:
       return 'Error_Cod_Risk';
@@ -338,8 +339,50 @@ function assignCodesPriority(sheet, row) {
       break;
     default:
       return 'Error_Cod_Priority';
-      break;
   }
 
   sheet.getRange('P' + row).setValue(priorityCode);
+}
+
+function convertToExcel() {
+  // Obtener la hoja desde la función conectionSheets
+  const { p_CT_Output_Data } = conectionSheets();
+  
+  // Obtener los datos de la hoja de salida
+  const data = p_CT_Output_Data.getDataRange().getValues();
+
+  // Crear un nuevo archivo de Excel
+  const newSpreadsheet = SpreadsheetApp.create('CT_Output_Data_Excel');
+  const newSheet = newSpreadsheet.getActiveSheet();
+  newSheet.getRange(1, 1, data.length, data[0].length).setValues(data);
+
+  // Obtener el archivo de Excel recién creado
+  const excelFile = DriveApp.getFileById(newSpreadsheet.getId());
+
+  // Obtener la carpeta donde se guardará el archivo
+  const folderName = 'Creacion_Tarjetas';
+  const folders = DriveApp.getFoldersByName(folderName);
+  let folder;
+  
+  // Verificar si la carpeta existe o crearla si no existe
+  if (folders.hasNext()) {
+    folder = folders.next();
+  } else {
+    folder = DriveApp.createFolder(folderName);
+  }
+
+  // Verificar si ya existe un archivo con el mismo nombre en la carpeta
+  const existingFiles = folder.getFilesByName(excelFile.getName());
+  if (existingFiles.hasNext()) {
+    // Eliminar el archivo existente antes de crear uno nuevo
+    const existingFile = existingFiles.next();
+    existingFile.setTrashed(true);
+  }
+
+  // Mover el archivo de Excel a la carpeta
+  excelFile.moveTo(folder);
+
+  // Obtener el enlace al archivo y mostrarlo en el registro
+  const fileUrl = excelFile.getUrl();
+  Logger.log("Archivo de Excel creado y guardado en Google Drive: " + fileUrl);
 }
