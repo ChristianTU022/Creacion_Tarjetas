@@ -345,44 +345,41 @@ function assignCodesPriority(sheet, row) {
 }
 
 function convertToExcel() {
-  // Obtener la hoja desde la función conectionSheets
-  const { p_CT_Output_Data } = conectionSheets();
-  
-  // Obtener los datos de la hoja de salida
-  const data = p_CT_Output_Data.getDataRange().getValues();
+  var hoja = SpreadsheetApp.getActiveSpreadsheet();
+  var hojaSeleccionada = hoja.getSheetByName('CT_Output_Data');
+
+  // Verificar si la hoja 'CT_Output_Data' existe
+  if (!hojaSeleccionada) {
+    SpreadsheetApp.getUi().alert("La hoja 'CT_Output_Data' no existe.");
+    return;
+  }
+
+  // Obtener los datos de la hoja seleccionada
+  var data = hojaSeleccionada.getDataRange().getValues();
 
   // Crear un nuevo archivo de Excel
-  const newSpreadsheet = SpreadsheetApp.create('CT_Output_Data_Excel');
-  const newSheet = newSpreadsheet.getActiveSheet();
+  var newSpreadsheet = SpreadsheetApp.create('CT_Output_Data_Excel');
+  var newSheet = newSpreadsheet.getActiveSheet();
   newSheet.getRange(1, 1, data.length, data[0].length).setValues(data);
 
-  // Obtener el archivo de Excel recién creado
-  const excelFile = DriveApp.getFileById(newSpreadsheet.getId());
+  // Obtener el ID del archivo de Excel recién creado
+  var fileId = newSpreadsheet.getId();
+  var file = DriveApp.getFileById(fileId);
 
-  // Obtener la carpeta donde se guardará el archivo
-  const folderName = 'Creacion_Tarjetas';
-  const folders = DriveApp.getFoldersByName(folderName);
-  let folder;
+  // Obtener la URL de descarga del archivo de Excel
+  var url = "https://docs.google.com/feeds/download/spreadsheets/Export?key=" + fileId + "&exportFormat=xlsx";
   
-  // Verificar si la carpeta existe o crearla si no existe
-  if (folders.hasNext()) {
-    folder = folders.next();
-  } else {
-    folder = DriveApp.createFolder(folderName);
-  }
-
-  // Verificar si ya existe un archivo con el mismo nombre en la carpeta
-  const existingFiles = folder.getFilesByName(excelFile.getName());
-  if (existingFiles.hasNext()) {
-    // Eliminar el archivo existente antes de crear uno nuevo
-    const existingFile = existingFiles.next();
-    existingFile.setTrashed(true);
-  }
-
-  // Mover el archivo de Excel a la carpeta
-  excelFile.moveTo(folder);
-
-  // Obtener el enlace al archivo y mostrarlo en el registro
-  const fileUrl = excelFile.getUrl();
-  Logger.log("Archivo de Excel creado y guardado en Google Drive: " + fileUrl);
+  // Descargar el archivo de Excel
+  var response = UrlFetchApp.fetch(url, {
+    headers: {
+      'Authorization': 'Bearer ' + ScriptApp.getOAuthToken()
+    }
+  });
+  
+  var blob = response.getBlob();
+  blob.setName('CT_Output_Data.xlsx');
+  
+  // Crear un enlace de descarga para el usuario
+  var html = "<a href='" + url + "' download='CT_Output_Data.xlsx'>Click en el Enlace para Descargar Archivo</a>.";
+  SpreadsheetApp.getUi().showModalDialog(HtmlService.createHtmlOutput(html), "Descargar archivo");
 }
