@@ -47,7 +47,7 @@ function confirmClearDataEntry() {
 //Funcion que permite Limpiar los datos del formulario sheets la hoja "CT_Output_Data"
 function confirmClearDataOutput() {
   //Se debe especificar hasta el numero de Columna que se desea eliminar (ultimo parametro)
-  confirmAndCleanData('CT_Output_Data', '¿Está seguro de que desea limpiar los datos de "Salida"?\n\nEste proceso limpiará cualquier tipo de dato.', 'Q');
+  confirmAndCleanData('CT_Output_Data', '¿Está seguro de que desea limpiar los datos de "Salida"?\n\nEste proceso limpiará cualquier tipo de dato.', 'R');
 }
 
 
@@ -97,7 +97,7 @@ function duplicateData() {
                           p_CT_Input_Data.getRange('K' + row).getValue() + '' +
                           p_CT_Input_Data.getRange('L' + row).getValue() + '' +
                           p_CT_Input_Data.getRange('N' + row).getValue();
-    const person_name = p_CT_Input_Data.getRange('D' + row).getValue();
+    const person_name = p_CT_Input_Data.getRange('D' + row).getValue().slice(0, 12);
     const place = p_CT_Input_Data.getRange('C' + row).getValue();
     const plannerGroup = p_CT_Input_Data.getRange('O' + row).getValue();
     const priority = p_CT_Input_Data.getRange('T' + row).getValue();
@@ -370,14 +370,23 @@ function convertToExcel() {
   var url = "https://docs.google.com/feeds/download/spreadsheets/Export?key=" + fileId + "&exportFormat=xlsx";
   
   // Descargar el archivo de Excel
-  var response = UrlFetchApp.fetch(url, {
-    headers: {
-      'Authorization': 'Bearer ' + ScriptApp.getOAuthToken()
-    }
-  });
-  
-  var blob = response.getBlob();
+  var blob = file.getBlob();
   blob.setName('CT_Output_Data.xlsx');
+
+
+  // var response = UrlFetchApp.fetch(url, {
+  //   headers: {
+  //     'Authorization': 'Bearer ' + ScriptApp.getOAuthToken()
+  //   }
+  // });
+  
+  // var blob = response.getBlob();
+
+  // Buscar el archivo existente en Drive
+  var existingFile = DriveApp.getFilesByName('CT_Output_Data.xlsx').next();
+  
+  // Sobrescribir el contenido del archivo existente con los nuevos datos
+  existingFile.setContent(blob);
   
   // Crear un enlace de descarga para el usuario
   var html = "<a href='" + url + "' download='CT_Output_Data.xlsx'>Click en el Enlace para Descargar Archivo</a>.";
