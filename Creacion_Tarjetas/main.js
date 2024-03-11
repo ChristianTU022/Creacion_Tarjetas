@@ -12,7 +12,7 @@ function onOpen() {
 //Funcion para Conectarse al Sheet
 function conectionSheets() {
    //Conectar Sheets a AppScript
-  const sheetId = '1pPWE_pS5tNcRabGIIymprfMo2TNWswZKNv5ovOZ95dY';
+  const sheetId = '1pPWE_pS5tNcRabGIIymprfMo2TNWswZKNv5ovOZ95dY'; //1IfbxGR6tHOPCHc0r2oVb5R9B598clH6V5Fh5aNiZKqE Cod Original
   const sheet = SpreadsheetApp.openById(sheetId);
    //Conectar Hojas especificas
   const p_CT_Input_Data = sheet.getSheetByName('CT_Input_Data');
@@ -157,7 +157,7 @@ function get_Cod_Title(sheet, row) {
     case 'Condición de operación':
       return 'CO';
     default:
-      return 'Error_Cod_Title';
+      return 'Error_Cod_Card_Title';
   }
 }
 
@@ -191,6 +191,8 @@ function assignCodesPlace(sheet) {
     ["Mercadeo", "DR15-EADM-OEAD"],
     ["Exteriores", "DR15-EXTE"],
     ["Plantas de tratamiento de aguas (PTAR - PTAP)", "DR15-PTAR"],
+    ["Plantas de tratamiento de aguas Residuales", "DR15-PTAR"],
+    ["Plantas de tratamiento de agua Potable", "DR15-PTAR"],
     ["Bodega de excedentes industriales", "DR15-CRES"],
     ["Zona de contratistas", "DR15-ZCNT"],
     ["Portería", "DR15-PORT"],
@@ -222,6 +224,7 @@ function assignCodesPG(sheet, row) {
   switch (valueG) {
     case 'Jefe de ingeniería y montajes':
       codeN = 'M12';
+      codeO = 'COORING';
       break;
     case 'Obras civiles':
       codeN = 'M06';
@@ -241,15 +244,19 @@ function assignCodesPG(sheet, row) {
       break;
     case 'Jefe servicios administrativos':
       codeN = 'M12';
+      codeO = 'COORING';
       break;
     case 'Jefe de empaque':
       codeN = 'M03';
+      codeO = 'JEFE_EMP';
       break;
     case 'Jefe de pastificio':
       codeN = 'M02';
-      break;
+      codeO = 'JEFEPAST';
+    break;
     case 'Jefe de molino':
       codeN = 'M01';
+      codeO = 'JEFEMOL';
       break;
     case 'Jefe CEDI':
       codeN = 'M10';
@@ -257,18 +264,23 @@ function assignCodesPG(sheet, row) {
       break;
     case 'Jefe materias primas':
       codeN = 'M13';
+      codeO = 'JEFE_MP';
       break;
     case 'Jefe de almacén general':
       codeN = 'M14';
+      codeO = 'JEFEALG';
       break;
     case 'Metrología':
       codeN = 'M05';
+      codeO = 'METRO001';
       break;
     case 'Servicios Industriales':
       codeN = 'M04';
+      codeO = 'ANLING02';
       break;
     case 'Autónomo':
       codeN = 'M09';
+      codeO = 'ANLING02';
       break;
     case 'Técnico eléctrico':
       codeN = 'M12';
@@ -280,6 +292,7 @@ function assignCodesPG(sheet, row) {
       break;
     case 'Sistema de Dosificación y Mezclas':
       codeN = 'M11';
+      codeO = 'ANLING02';
       break;
     default:
       return 'Error_Cod_PG';

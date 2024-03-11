@@ -1,18 +1,54 @@
-Jefe de ingeniería y montajes       // M12  // 
+Jefe de ingeniería y montajes       // M12  // COORING
 Obras civiles                       // M06  // CONTCVIL
 Jefe Aseguramiento de calidad       // M07  // ANLICAL
 Coordinador de gestión ambiental    // M07  // JEFEGAMB
 Equipo SST                          // M08  // COORSST
-Jefe servicios administrativos      // M12  // 
-Jefe de empaque                     // M03  // 
-Jefe de pastificio                  // M02  // 
-Jefe de molino                      // M01  // 
+Jefe servicios administrativos      // M12  // COORING
+Jefe de empaque                     // M03  // JEFE_EMP
+Jefe de pastificio                  // M02  // JEFEPAST
+Jefe de molino                      // M01  // JEFEMOL
 Jefe CEDI                           // M10  // JEFECEDI
-Jefe materias primas                // M13  // 
-Jefe de almacén general             // M14  // 
-Metrología                          // M05  // 
-Servicios Industriales              // M04  // 
-Autónomo                            // M09  // 
+Jefe materias primas                // M13  // JEFE_MP
+Jefe de almacén general             // M14  // JEFEALG
+Metrología                          // M05  // METRO001
+Servicios Industriales              // M04  // ANLING02
+Autónomo                            // M09  // ANLING02
 Técnico eléctrico                   // M12  // JEFIYM02
 Técnico mecánico                    // M12  // JEFIYM01
-Sistema de Dosificación y Mezclas   // M11  // 
+Sistema de Dosificación y Mezclas   // M11  // ANLING02
+
+
+
+
+Logística - Materias Primas         //  M13
+Logística -  Almacén General        //  M14
+Manufactura - Molino                //  M01
+Manufactura - Pastificio            //  M02
+Manufactura - Empaque               //  M03
+Edificio Información Manufactura    //  M02
+Ingeniería y Montajes               //  M12
+Servicios Técnicos                  //  M04
+SDM                                 //  M11
+Empaques especiales (CEMPA)         //  M03
+Logística CEDI A                    //  M10
+Logística CEDI B                    //  M10
+Calidad Integral                    //  M07
+Laboratorio de Calidad              //  M07
+Laboratorio I+D                     //  M07
+Edificio Administrativo             //  M09
+Mercadeo                            //  N/A     
+Exteriores                          //  M06
+Plantas de tratamiento de (PTAP)    //  M0      *
+Plantas de tratamiento de (PTAR)    //  M0      *
+Bodega de excedentes industriales   //  M0      *
+Zona de contratistas                //  M0      *
+Portería                            //  M0      *
+Casino                              //  M0      *
+Cuarto de Baterías                  //  M0      *
+Cuarto Venta de Empleados           //  M0      *
+Proyectos                           //  M12
+Taller de Mantenimientos            //  M12
+Seguridad Industriales              //  M08
+
+
+
