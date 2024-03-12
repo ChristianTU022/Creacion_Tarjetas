@@ -24,5 +24,12 @@ Casino  // DR15-EADM-CSNO
 Cuarto de Baterías  // DR15-OPER-CEDI
 Cuarto Venta de Empleados  // DR15-OPER-CEDI
 
+//¡¡¡New 1.0!!!
++++Seguridad Industrial   //  
++++Taller de Mantenimientos   //  
++++Proyectos   //  
+---Mercadeo   //  
+
+
 
 

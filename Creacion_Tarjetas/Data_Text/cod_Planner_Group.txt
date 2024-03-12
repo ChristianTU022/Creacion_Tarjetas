@@ -17,9 +17,26 @@ Técnico eléctrico                   // M12  // JEFIYM02
 Técnico mecánico                    // M12  // JEFIYM01
 Sistema de Dosificación y Mezclas   // M11  // ANLING02
 
+//¡¡¡New 1.0!!!
+---Sistema de Dosificación y Mezclas
+---Metrología
+---Servicios Industriales 
+---Jefe de ingeniería y montajes
+---Técnico eléctrico
+---Técnico mecánico
++++Tecnico Electrico Molino
++++Tecnico Mecanico Molino
++++Tecnico Electrico Pastificio
++++Tecnico Mecanico Pastificio
++++Tecnico Electrico Empaque
++++Tecnico Mecanico Empaque
++++Servicios Tecnicos
++++Coordinador de Proyectos
++++Tecnico Mecanico SDM
 
 
 
+//¡¡¡New 1.0!!!
 Logística - Materias Primas         //  M13
 Logística -  Almacén General        //  M14
 Manufactura - Molino                //  M01
@@ -35,8 +52,7 @@ Logística CEDI B                    //  M10
 Calidad Integral                    //  M07
 Laboratorio de Calidad              //  M07
 Laboratorio I+D                     //  M07
-Edificio Administrativo             //  M09
-Mercadeo                            //  N/A     
+Edificio Administrativo             //  M09   
 Exteriores                          //  M06
 Plantas de tratamiento de (PTAP)    //  M0      *
 Plantas de tratamiento de (PTAR)    //  M0      *
@@ -48,7 +64,7 @@ Cuarto de Baterías                  //  M0      *
 Cuarto Venta de Empleados           //  M0      *
 Proyectos                           //  M12
 Taller de Mantenimientos            //  M12
-Seguridad Industriales              //  M08
+Seguridad Industrial                //  M08
 
 
 

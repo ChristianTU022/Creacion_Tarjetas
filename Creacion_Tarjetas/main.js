@@ -370,38 +370,20 @@ function convertToExcel() {
   // Obtener los datos de la hoja seleccionada
   var data = hojaSeleccionada.getDataRange().getValues();
 
-  // Crear un nuevo archivo de Excel
+  // Crear un nuevo archivo de Excel en Google Drive
   var newSpreadsheet = SpreadsheetApp.create('CT_Output_Data_Excel');
   var newSheet = newSpreadsheet.getActiveSheet();
   newSheet.getRange(1, 1, data.length, data[0].length).setValues(data);
 
   // Obtener el ID del archivo de Excel recién creado
   var fileId = newSpreadsheet.getId();
-  var file = DriveApp.getFileById(fileId);
 
   // Obtener la URL de descarga del archivo de Excel
-  var url = "https://docs.google.com/feeds/download/spreadsheets/Export?key=" + fileId + "&exportFormat=xlsx";
-  
-  // Descargar el archivo de Excel
-  var blob = file.getBlob();
-  blob.setName('CT_Output_Data.xlsx');
+  var url = "https://docs.google.com/spreadsheets/d/" + fileId + "/export?format=xlsx";
 
-
-  // var response = UrlFetchApp.fetch(url, {
-  //   headers: {
-  //     'Authorization': 'Bearer ' + ScriptApp.getOAuthToken()
-  //   }
-  // });
-  
-  // var blob = response.getBlob();
-
-  // Buscar el archivo existente en Drive
-  var existingFile = DriveApp.getFilesByName('CT_Output_Data.xlsx').next();
-  
-  // Sobrescribir el contenido del archivo existente con los nuevos datos
-  existingFile.setContent(blob);
-  
-  // Crear un enlace de descarga para el usuario
-  var html = "<a href='" + url + "' download='CT_Output_Data.xlsx'>Click en el Enlace para Descargar Archivo</a>.";
+  // Abrir la URL en una nueva ventana o pestaña
+  var html = "<script>window.open('" + url + "');</script>";
   SpreadsheetApp.getUi().showModalDialog(HtmlService.createHtmlOutput(html), "Descargar archivo");
 }
+
+
