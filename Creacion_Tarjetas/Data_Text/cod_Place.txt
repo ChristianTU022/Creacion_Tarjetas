@@ -25,10 +25,13 @@ Cuarto de Baterías  // DR15-OPER-CEDI
 Cuarto Venta de Empleados  // DR15-OPER-CEDI
 
 //¡¡¡New 1.0!!!
-+++Seguridad Industrial   //  
-+++Taller de Mantenimientos   //  
-+++Proyectos   //  
++++Planta de Tratamiento de Aguas Residuales   //  DR15-PTAR
++++Planta de Tratamiento de Agua Potable   //  DR15-PTAP
++++Seguridad Industrial   //  DR15-EADM
++++Taller de Mantenimientos   //  DR15-TMTO
++++Proyectos   //  DR15-TMTO-INGE
 ---Mercadeo   //  
+---Plantas de tratamiento de aguas (PTAR - PTAP)   //  
 
 
 
