@@ -180,7 +180,7 @@ function assignCodesPlace(sheet) {
     ["Edificio Información Manufactura", "DR15-PAST-OEPA"],
     ["Ingeniería y Montajes", "DR15-TMTO-INGE"],
     ["Servicios Técnicos", "DR15-TMTO"],
-    ["Metrologia", "DR15-"],
+    ["Metrologia", "DR15-TMTO"],
     ["SDM", "DR15-PAST-SDME"],
     ["Empaques especiales (CEMPA)", "DR15-EMPA-EESP"],
     ["Logística CEDI A", "DR15-OPER-CEDI"],
@@ -216,83 +216,792 @@ function assignCodesPlace(sheet) {
 
 //Funcion Para Asociar Los grupos de planeacion a un Codigo "COD_PLANNER_GROUP" y imprimirlo en las columnas especificadas 
 function assignCodesPG(sheet, row) {
+  const valueF = sheet.getRange('F' + row).getValue();
   const valueG = sheet.getRange('G' + row).getValue();
   let codeN = '';
   let codeO = '';
 
-  switch (valueG) {
-    case 'Jefe de ingeniería y montajes':
-      codeN = 'M12';
-      codeO = 'ANLING02';
-      break;
-    case 'Obras civiles':
-      codeN = 'M06';
-      codeO = 'CONTCVIL';
-      break;
-    case 'Jefe Aseguramiento de calidad':
-      codeN = 'M07';
-      codeO = 'ANLICAL';
-      break;
-    case 'Coordinador de gestión ambiental':
-      codeN = 'M07';
-      codeO = 'JEFEGAMB';
-      break;
-    case 'Equipo SST':
-      codeN = 'M08';
-      codeO = 'COORSST';
-      break;
-    case 'Jefe servicios administrativos':
-      codeN = 'M12';
-      codeO = 'ANLING02';
-      break;
-    case 'Jefe de empaque':
-      codeN = 'M03';
-      codeO = 'JEFE_EMP';
-      break;
-    case 'Jefe de pastificio':
-      codeN = 'M02';
-      codeO = 'JEFEPAST';
+  switch (valueF) {
+    case 'Logística - Materias Primas':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
     break;
-    case 'Jefe de molino':
-      codeN = 'M01';
-      codeO = 'JEFEMOL';
-      break;
-    case 'Jefe CEDI':
-      codeN = 'M10';
-      codeO = 'JEFECEDI';
-      break;
-    case 'Jefe materias primas':
-      codeN = 'M13';
-      codeO = 'JEFE_MP';
-      break;
-    case 'Jefe de almacén general':
-      codeN = 'M14';
-      codeO = 'JEFEALG';
-      break;
+    case 'Logística -  Almacén General':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Manufactura - Molino':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Manufactura - Pastificio':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Manufactura - Empaque':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Edificio Información Manufactura':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Ingeniería y Montajes':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Servicios Técnicos':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
     case 'Metrología':
-      codeN = 'M05';
-      codeO = 'METRO001';
-      break;
-    case 'Servicios Industriales':
-      codeN = 'M04';
-      codeO = 'ANLING02';
-      break;
-    case 'Autónomo':
-      codeN = 'M09';
-      codeO = 'ANLING02';
-      break;
-    case 'Técnico eléctrico':
-      codeN = 'M12';
-      codeO = 'JEFIYM02';
-      break;
-    case 'Técnico mecánico':
-      codeN = 'M12';
-      codeO = 'JEFIYM01';
-      break;
-    case 'Sistema de Dosificación y Mezclas':
-      codeN = 'M11';
-      codeO = 'ANLING02';
-      break;
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'SDM':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Empaques especiales (CEMPA)':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Logística CEDI A':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Logística CEDI B':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Laboratorio de Calidad':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Laboratorio I+D':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Edificio Administrativo':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Exteriores':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Plantas de tratamiento de aguas Residuales (PTAR)':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Plantas de tratamiento de agua Potable (PTAR)':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Bodega de excedentes industriales':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Zona de contratistas':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Portería':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Casino':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Cuarto de Baterías':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Cuarto Venta de Empleados':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
+    case 'Taller de Mantenimientos':
+      codeN = 'M';
+      switch(valueG) {
+        case 'Jefe Aseguramiento de Calidad':
+          codeO = '';
+          break;
+        case 'Coordinador de Gestión Ambiental':
+          codeO = '';
+          break;
+        case 'Equipo SST':
+          codeO = '';
+          break;
+        case 'Obras Civiles':
+          codeO = '';
+          break;
+        case 'Reparaciones Metalmecanicas IMB':
+          codeO = '';
+          break;
+        case 'Tecnico Eléctrico':
+          codeO = '';
+          break;
+        case 'Tecnico Mecánico':
+          codeO = '';
+          break;
+        case 'Coordinador de Proyectos':
+          break;
+        default:
+          return 'Error_Cod_Responsible';
+      }
+    break;
     default:
       return 'Error_Cod_PG';
   }

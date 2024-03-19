@@ -80,7 +80,7 @@ Manufactura - Empaque               //  M03
 Edificio Información Manufactura    //  M**
 Ingeniería y Montajes               //  M12
 Servicios Técnicos                  //  M04
-Metrologia                          //  M05
+Metrología                          //  M05
 SDM                                 //  M11
 Empaques especiales (CEMPA)         //  M**
 Logística CEDI A                    //  M10
@@ -98,3 +98,31 @@ Casino                              //  M**
 Cuarto de Baterías                  //  M**
 Cuarto Venta de Empleados           //  M**
 Taller de Mantenimientos            //  M**
+
+//Options in form and Code
+Logística - Materias Primas
+Logística -  Almacén General
+Manufactura - Molino
+Manufactura - Pastificio
+Manufactura - Empaque
+Edificio Información Manufactura
+Ingeniería y Montajes
+Servicios Técnicos
+Metrología
+SDM
+Empaques especiales (CEMPA)
+Logística CEDI A
+Logística CEDI B
+Laboratorio de Calidad
+Laboratorio I+D
+Edificio Administrativo
+Exteriores
+Plantas de tratamiento de aguas Residuales (PTAR)
+Plantas de tratamiento de agua Potable (PTAR)
+Bodega de excedentes industriales
+Zona de contratistas
+Portería
+Casino
+Cuarto de Baterías
+Cuarto Venta de Empleados
+Taller de Mantenimientos
