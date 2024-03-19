@@ -24,15 +24,45 @@ Casino  // DR15-EADM-CSNO
 Cuarto de Baterías  // DR15-OPER-CEDI
 Cuarto Venta de Empleados  // DR15-OPER-CEDI
 
-//¡¡¡New 1.0!!!
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//¡¡¡New 1.0.1!!!
 +++Planta de Tratamiento de Aguas Residuales   //  DR15-PTAR
 +++Planta de Tratamiento de Agua Potable   //  DR15-PTAP
-+++Seguridad Industrial   //  DR15-EADM
 +++Taller de Mantenimientos   //  DR15-TMTO
-+++Proyectos   //  DR15-TMTO-INGE
 ---Mercadeo   //  
----Plantas de tratamiento de aguas (PTAR - PTAP)   //  
+---Plantas de tratamiento de aguas (PTAR - PTAP)   // 
+---Calidad Integral 
 
 
-
+//¡¡¡New 1.0.1!!!               
+Logística - Materias Primas         
+Logística -  Almacén General        
+Manufactura - Molino               
+Manufactura - Pastificio            
+Manufactura - Empaque               
+Edificio Información Manufactura
+Ingeniería y Montajes               
+Servicios Técnicos                  
++++Metrologia                          
+SDM                                 
+Empaques especiales (CEMPA)
+Logística CEDI A                    
+Logística CEDI B                    
+---Calidad Integral
+Laboratorio de Calidad              
+Laboratorio I+D
+Edificio Administrativo
+---Mercadeo
+Exteriores 
++++Plantas de tratamiento de aguas Residuales (PTAR)
++++Plantas de tratamiento de agua Potable (PTAR)
+Bodega de excedentes industriales
+Zona de contratistas                
+Portería  
+Casino
+Cuarto de Baterías 
+Cuarto Venta de Empleados
+Taller de Mantenimientos    //  DR15-TMTO
 

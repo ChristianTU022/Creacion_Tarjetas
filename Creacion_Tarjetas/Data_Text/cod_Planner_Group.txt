@@ -1,9 +1,9 @@
-Jefe de ingeniería y montajes       // M12  // COORING
+Jefe de ingeniería y montajes       // M12  // ANLING02
 Obras civiles                       // M06  // CONTCVIL
 Jefe Aseguramiento de calidad       // M07  // ANLICAL
 Coordinador de gestión ambiental    // M07  // JEFEGAMB
 Equipo SST                          // M08  // COORSST
-Jefe servicios administrativos      // M12  // COORING
+Jefe servicios administrativos      // M12  // ANLING02
 Jefe de empaque                     // M03  // JEFE_EMP
 Jefe de pastificio                  // M02  // JEFEPAST
 Jefe de molino                      // M01  // JEFEMOL
@@ -16,6 +16,9 @@ Autónomo                            // M09  // ANLING02
 Técnico eléctrico                   // M12  // JEFIYM02
 Técnico mecánico                    // M12  // JEFIYM01
 Sistema de Dosificación y Mezclas   // M11  // ANLING02
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //¡¡¡New 1.0!!!
 ---Sistema de Dosificación y Mezclas
@@ -33,7 +36,6 @@ Sistema de Dosificación y Mezclas   // M11  // ANLING02
 +++Servicios Tecnicos
 +++Coordinador de Proyectos
 +++Tecnico Mecanico SDM
-
 
 
 //¡¡¡New 1.0!!!
@@ -66,5 +68,33 @@ Proyectos                           //  M12
 Taller de Mantenimientos            //  M12
 Seguridad Industrial                //  M08
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+//¡¡¡New 1.0.1!!!   26 Places  *    9 Responsible         
+Logística - Materias Primas         //  M13
+Logística -  Almacén General        //  M14
+Manufactura - Molino                //  M01
+Manufactura - Pastificio            //  M02
+Manufactura - Empaque               //  M03
+Edificio Información Manufactura    //  M**
+Ingeniería y Montajes               //  M12
+Servicios Técnicos                  //  M04
+Metrologia                          //  M05
+SDM                                 //  M11
+Empaques especiales (CEMPA)         //  M**
+Logística CEDI A                    //  M10
+Logística CEDI B                    //  M10
+Laboratorio de Calidad              //  M07
+Laboratorio I+D                     //  M**
+Edificio Administrativo             //  M**
+Exteriores
+Plantas de tratamiento de aguas Residuales (PTAR)   //  M**
+Plantas de tratamiento de agua Potable (PTAR)       //  M**
+Bodega de excedentes industriales   //  M**
+Zona de contratistas                //  M06
+Portería                            //  M**
+Casino                              //  M**
+Cuarto de Baterías                  //  M**
+Cuarto Venta de Empleados           //  M**
+Taller de Mantenimientos            //  M**

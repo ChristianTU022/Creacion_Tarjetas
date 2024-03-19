@@ -172,7 +172,7 @@ function concatenateColumnsTitle(sheet, row) {
 //Funcion Para Asociar Los lugares a un Codigo cod_place y imprimirlo en la columna especifica
 function assignCodesPlace(sheet) {
   const descriptions = [
-    ["Logística - Materias Primas", "DR15-ALMG"/*, mas codigos y especificos*/],
+    ["Logística - Materias Primas", "DR15-ALMG"/*, mas codigos y especificos en caso de requerir*/],
     ["Logística -  Almacén General", "DR15-ALMG"],
     ["Manufactura - Molino", "DR15-MOL1"],
     ["Manufactura - Pastificio", "DR15-PAST"],
@@ -180,25 +180,24 @@ function assignCodesPlace(sheet) {
     ["Edificio Información Manufactura", "DR15-PAST-OEPA"],
     ["Ingeniería y Montajes", "DR15-TMTO-INGE"],
     ["Servicios Técnicos", "DR15-TMTO"],
+    ["Metrologia", "DR15-"],
     ["SDM", "DR15-PAST-SDME"],
     ["Empaques especiales (CEMPA)", "DR15-EMPA-EESP"],
     ["Logística CEDI A", "DR15-OPER-CEDI"],
     ["Logística CEDI B", "DR15-PAST-CD_B"],
-    ["Calidad Integral", "DR15-PAST-OCAL"],
     ["Laboratorio de Calidad", "DR15-LABS-LCAL"],
     ["Laboratorio I+D", "DR15-LABS-INV"],
     ["Edificio Administrativo", "DR15-EADM"],
-    ["Mercadeo", "DR15-EADM-OEAD"],
     ["Exteriores", "DR15-EXTE"],
-    ["Plantas de tratamiento de aguas (PTAR - PTAP)", "DR15-PTAR"],
-    ["Plantas de tratamiento de aguas Residuales", "DR15-PTAR"],
-    ["Plantas de tratamiento de agua Potable", "DR15-PTAR"],
+    ["Plantas de tratamiento de aguas Residuales (PTAR)", "DR15-PTAR"],
+    ["Plantas de tratamiento de agua Potable (PTAP)", "DR15-PTAR"],
     ["Bodega de excedentes industriales", "DR15-CRES"],
     ["Zona de contratistas", "DR15-ZCNT"],
     ["Portería", "DR15-PORT"],
     ["Casino", "DR15-EADM-CSNO"],
     ["Cuarto de Baterías", "DR15-OPER-CEDI"],
     ["Cuarto Venta de Empleados", "DR15-OPER-CEDI"],
+    ["Taller de Mantenimientos", "DR15-TMTO"],
   ];
 
   const lastRow = sheet.getLastRow();
@@ -224,7 +223,7 @@ function assignCodesPG(sheet, row) {
   switch (valueG) {
     case 'Jefe de ingeniería y montajes':
       codeN = 'M12';
-      codeO = 'COORING';
+      codeO = 'ANLING02';
       break;
     case 'Obras civiles':
       codeN = 'M06';
@@ -244,7 +243,7 @@ function assignCodesPG(sheet, row) {
       break;
     case 'Jefe servicios administrativos':
       codeN = 'M12';
-      codeO = 'COORING';
+      codeO = 'ANLING02';
       break;
     case 'Jefe de empaque':
       codeN = 'M03';
