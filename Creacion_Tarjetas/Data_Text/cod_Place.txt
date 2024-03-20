@@ -31,9 +31,17 @@ Cuarto Venta de Empleados  // DR15-OPER-CEDI
 +++Planta de Tratamiento de Aguas Residuales   //  DR15-PTAR
 +++Planta de Tratamiento de Agua Potable   //  DR15-PTAP
 +++Taller de Mantenimientos   //  DR15-TMTO
++++Manufactura - Pastificio A           // DR15-PAST-FPL1
++++Manufactura - Pastificio B           // DR15-PAST-LINE- B
++++Manufactura - Pastificio C           // DR15-PAST-FPC1
++++Manufactura - Pastificio D           // DR15-PAST-GPC1
++++Manufactura - Empaque Pasta Larga    // DR15-EMPA-EFPL
++++Manufactura - Empaque Pasta Corta    // DR15-EMPA-EFGC
 ---Mercadeo   //  
 ---Plantas de tratamiento de aguas (PTAR - PTAP)   // 
----Calidad Integral 
+---Calidad Integral
+---Manufactura - Empaque
+---Manufactura - Pastificio
 
 
 //¡¡¡New 1.0.1!!!               
