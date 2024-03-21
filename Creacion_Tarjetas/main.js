@@ -220,25 +220,23 @@ function assignCodesPlace(sheet) {
 
 //Funcion Para Asociar Los grupos de planeacion a un Codigo "COD_PLANNER_GROUP" y imprimirlo en las columnas especificadas 
 function assignCodesPG(sheet, row) {
-  const valueF = sheet.getRange('F' + row).getValue();  //Trae el dato almacenado en la columna  "Place"
-  const valueG = sheet.getRange('G' + row).getValue();  //Trae el dato almacenado en la columna "Planner_Group"
-  const valueR = sheet.getRange('R' + row).getValue();  //Trae el dato almacenado en la columna "Who_Solution"
+  const valuePlace = sheet.getRange('F' + row).getValue(); //De la hoja de Salida toma la columna F que pertenece al lugar
+  const valueResponsible = sheet.getRange('G' + row).getValue();  //
   let codeN = '';
   let codeO = '';
 
-  if (valueR == 'Autónomo')
-  {
-
-  } else {
-    switch (valueF) {
+    switch (valuePlace) {
       case 'Logística - Materias Primas':
         codeN = 'M13';
-        switch(valueG) {
+        switch(valueResponsible) {
           case 'Tecnico Eléctrico':
             codeO = 'TECN003';
             break;
           case 'Tecnico Mecánico':
             codeO = 'MECA013';
+            break;
+          case 'Autónomo':
+            codeO = 'JEFE_MP';
             break;
           default:
             break;
@@ -246,12 +244,15 @@ function assignCodesPG(sheet, row) {
       break;
       case 'Logística -  Almacén General':
         codeN = 'M14';
-        switch(valueG) {
+        switch(valueResponsible) {
           case 'Tecnico Eléctrico':
             codeO = 'TECN003';
             break;
           case 'Tecnico Mecánico':
             codeO = 'MECA013';
+            break;
+          case 'Autónomo':
+            codeO = 'JEFEALG';
             break;
           default:
             break;
@@ -259,12 +260,15 @@ function assignCodesPG(sheet, row) {
       break;
       case 'Manufactura - Molino':
         codeN = 'M01';
-        switch(valueG) {
+        switch(valueResponsible) {
           case 'Tecnico Eléctrico':
             codeO = 'TECN003';
             break;
           case 'Tecnico Mecánico':
             codeO = 'TECN001';
+            break;
+          case 'Autónomo':
+            codeO = 'JEFEMOL';
             break;
           default:
             break;
@@ -275,12 +279,15 @@ function assignCodesPG(sheet, row) {
       case 'Manufactura - Pastificio C':
       case 'Manufactura - Pastificio D':
         codeN = 'M02';
-        switch(valueG) {
+        switch(valueResponsible) {
           case 'Tecnico Eléctrico':
             codeO = 'ELECT008';
             break;
           case 'Tecnico Mecánico':
             codeO = 'TECN008';
+            break;
+          case 'Autónomo':
+            codeO = 'JEFEPAST';
             break;
           default:
             break;
@@ -289,12 +296,15 @@ function assignCodesPG(sheet, row) {
       case 'Manufactura - Empaque Pasta Larga':
       case 'Manufactura - Empaque Pasta Corta':
         codeN = 'M03';
-        switch(valueG) {
+        switch(valueResponsible) {
           case 'Tecnico Eléctrico':
             codeO = 'ELECT005';
             break;
           case 'Tecnico Mecánico':
             codeO = 'TECN004';
+            break;
+          case 'Autónomo':
+            codeO = 'JEFE_EMP';
             break;
           default:
             break;
@@ -302,303 +312,50 @@ function assignCodesPG(sheet, row) {
       break;
       case 'Edificio Información Manufactura':
         codeN = 'M';
-        switch(valueG) {
+        switch(valueResponsible) {
           case 'Tecnico Eléctrico':
             codeO = 'TECN003';
             break;
           case 'Tecnico Mecánico':
             codeO = 'MECA013';
             break;
-          default:
-            break;
-        }
-      break;
-      case 'Ingeniería y Montajes':
-        codeN = 'M12';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = 'ELECT004';
-            break;
-          case 'Tecnico Mecánico':
-            codeO = 'MECA013';
-            break;
-          default:
-            break;
-        }
-      break;
-      case 'Servicios Técnicos':
-        codeN = 'M04';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = 'TECN003';
-            break;
-          case 'Tecnico Mecánico':
-            codeO = 'MECA013';
-            break;
-          default:
-            break;
-        }
-      break;
-      case 'Metrología':
-        codeN = 'M05';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = 'ELECT009';
-            break;
-          case 'Tecnico Mecánico':
+          case 'Autónomo':
             codeO = '';
             break;
           default:
             break;
         }
       break;
-      case 'SDM':
-        codeN = 'M11';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = 'ELECT008';
-            break;
-          case 'Tecnico Mecánico':
-            codeO = 'TECN009';
-            break;
-          default:
-            break;
-        }
-      break;
-      case 'Empaques especiales (CEMPA)':
-        codeN = 'M';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = 'ELECT005';
-            break;
-          case 'Tecnico Mecánico':
-            codeO = 'TECN004';
-            break;
-          default:
-            break;
-        }
-      break;
-      case 'Logística CEDI A':
-        codeN = 'M10';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = 'TECN003';
-            break;
-          case 'Tecnico Mecánico':
-            codeO = 'MECA013';
-            break;
-          default:
-            break;
-        }
-      break;
-      case 'Logística CEDI B':
-        codeN = 'M10';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = 'TECN003';
-            break;
-          case 'Tecnico Mecánico':
-            codeO = 'MECA013';
-            break;
-          default:
-            break;
-        }
-      break;
-      case 'Laboratorio de Calidad':
-        codeN = 'M07';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = 'TECN003';
-            break;
-          case 'Tecnico Mecánico':
-            codeO = '';
-            break;
-          default:
-            break;
-        }
-      break;
-      case 'Laboratorio I+D':
-        codeN = 'M';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = 'TECN003';
-            break;
-          case 'Tecnico Mecánico':
-            codeO = 'MECA013';
-            break;
-          default:
-            break;
-        }
-      break;
-      case 'Edificio Administrativo':
-        codeN = 'M';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = 'TECN003';
-            break;
-          case 'Tecnico Mecánico':
-            codeO = 'MECA013';
-            break;
-          default:
-            break;
-        }
-      break;
-      case 'Exteriores':
-        codeN = 'M';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = 'TECN003';
-            break;
-          case 'Tecnico Mecánico':
-            codeO = 'MECA013';
-            break;
-          default:
-            break;
-        }
-      break;
-      case 'Plantas de tratamiento de aguas Residuales (PTAR)':
-        codeN = 'M';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = 'TECN003';
-            break;
-          case 'Tecnico Mecánico':
-            codeO = 'MECA013';
-            break;
-          default:
-            break;
-        }
-      break;
-      case 'Plantas de tratamiento de agua Potable (PTAR)':
-        codeN = 'M';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = 'TECN003';
-            break;
-          case 'Tecnico Mecánico':
-            codeO = 'MECA013';
-            break;
-          default:
-            break;
-        }
-      break;
-      case 'Bodega de excedentes industriales':
-        codeN = 'M';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = 'TECN003';
-            break;
-          case 'Tecnico Mecánico':
-            codeO = 'MECA013';
-            break;
-          default:
-            break;
-        }
-      break;
-      case 'Zona de contratistas':
-        codeN = 'M06';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = 'TECN003';
-            break;
-          case 'Tecnico Mecánico':
-            codeO = 'MECA013';
-            break;
-          default:
-            break;
-        }
-      break;
-      case 'Portería':
-        codeN = 'M';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = 'TECN003';
-            break;
-          case 'Tecnico Mecánico':
-            codeO = 'MECA013';
-            break;
-          default:
-            break;
-        }
-      break;
-      case 'Casino':
-        codeN = 'M';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = 'TECN003';
-            break;
-          case 'Tecnico Mecánico':
-            codeO = 'MECA013';
-            break;
-          default:
-            break;
-        }
-      break;
-      case 'Cuarto de Baterías':
-        codeN = 'M';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = 'TECN003';
-            break;
-          case 'Tecnico Mecánico':
-            codeO = 'MECA013';
-            break;
-          default:
-            break;
-        }
-      break;
-      case 'Cuarto Venta de Empleados':
-        codeN = 'M';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = 'TECN003';
-            break;
-          case 'Tecnico Mecánico':
-            codeO = 'MECA013';
-            break;
-          default:
-            break;
-        }
-      break;
-      case 'Taller de Mantenimientos':
-        codeN = 'M';
-        switch(valueG) {
-          case 'Tecnico Eléctrico':
-            codeO = '';
-            break;
-          case 'Tecnico Mecánico':
-            codeO = 'MECA013';
-            break;
-          default:
-            break;
-        }
-      break;
+
+      
+
       default:
         return 'Error_Cod_PG';
     }
+    
 
-    if(valueG === 'Jefe Aseguramiento de Calidad')
+    if(valueResponsible === 'Jefe Aseguramiento de Calidad')
       codeO = 'ANLICAL';
 
-    if(valueG === 'Coordinador de Gestión Ambiental')
+    if(valueResponsible === 'Coordinador de Gestión Ambiental')
       codeO = 'JEFEGAMB';
 
-    if(valueG === 'Equipo SST')
+    if(valueResponsible === 'Equipo SST')
       codeO = 'COORSST';
 
-    if(valueG === 'Obras Civiles')
+    if(valueResponsible === 'Obras Civiles')
       codeO = 'CONTCVIL';
 
-    if(valueG === 'Reparaciones Metalmecanicas IMB')
+    if(valueResponsible === 'Reparaciones Metalmecanicas IMB')
       codeO = 'CONTMEC';
 
-    if(valueG === 'Coordinador de Proyectos')
+    if(valueResponsible === 'Coordinador de Proyectos')
       codeO = 'COORING5';
 
-  }
 
-  sheet.getRange('N' + row).setValue(codeN);
-  sheet.getRange('O' + row).setValue(codeO);
+
+  sheet.getRange('N' + row).setValue(codeN);  //Cod_Planner_Group
+  sheet.getRange('O' + row).setValue(codeO);  //Cod_Planner_Group_Complement
 }
 
 //Funcion Para Asociar tipos de riesgo un Codigo "COD_RISK" y imprimirlo en la columna especificada
