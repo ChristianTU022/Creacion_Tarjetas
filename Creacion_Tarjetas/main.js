@@ -194,7 +194,7 @@ function assignCodesPlace(sheet) {
     ["Edificio Administrativo", "DR15-EADM"],
     ["Exteriores", "DR15-EXTE"],
     ["Plantas de tratamiento de aguas Residuales (PTAR)", "DR15-PTAR"],
-    ["Plantas de tratamiento de agua Potable (PTAP)", "DR15-PTAR"],
+    ["Plantas de tratamiento de agua Potable (PTAP)", "DR15-PTAP"],
     ["Bodega de excedentes industriales", "DR15-CRES"],
     ["Zona de contratistas", "DR15-ZCNT"],
     ["Portería", "DR15-PORT"],
@@ -242,6 +242,7 @@ function assignCodesPG(sheet, row) {
             break;
         }
       break;
+
       case 'Logística -  Almacén General':
         codeN = 'M14';
         switch(valueResponsible) {
@@ -258,6 +259,7 @@ function assignCodesPG(sheet, row) {
             break;
         }
       break;
+
       case 'Manufactura - Molino':
         codeN = 'M01';
         switch(valueResponsible) {
@@ -274,6 +276,7 @@ function assignCodesPG(sheet, row) {
             break;
         }
       break;
+
       case 'Manufactura - Pastificio A':
       case 'Manufactura - Pastificio B':
       case 'Manufactura - Pastificio C':
@@ -293,6 +296,7 @@ function assignCodesPG(sheet, row) {
             break;
         }
       break;
+
       case 'Manufactura - Empaque Pasta Larga':
       case 'Manufactura - Empaque Pasta Corta':
         codeN = 'M03';
@@ -310,6 +314,7 @@ function assignCodesPG(sheet, row) {
             break;
         }
       break;
+
       case 'Edificio Información Manufactura':
         codeN = 'M';
         switch(valueResponsible) {
@@ -327,7 +332,344 @@ function assignCodesPG(sheet, row) {
         }
       break;
 
+      case 'Ingeniería y Montajes':
+        codeN = 'M12';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = 'ELECT004';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = 'MECA013';
+            break;
+          case 'Autónomo':
+            codeO = 'COORING5';
+            break;
+          default:
+            break;
+        }
+      break;
+
+      case 'Servicios Técnicos':
+        codeN = 'M04';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = 'TECN003';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = 'MECA013';
+            break;
+          case 'Autónomo':
+            codeO = 'JEFIYM03';
+            break;
+          default:
+            break;
+        }
+      break;
+
+      case 'Metrología':
+        codeN = 'M05';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = 'ELECT009';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = '';
+            break;
+          case 'Autónomo':
+            codeO = 'METRO001';
+            break;
+          default:
+            break;
+        }
+      break;
+
+      case 'Taller de Mantenimientos':
+        codeN = 'M';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = '';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = 'MECA013';
+            break;
+          case 'Autónomo':
+            codeO = '';
+            break;
+          default:
+            break;
+        }
+      break;
+
+      case 'SDM':
+        codeN = 'M11';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = 'ELECT008';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = 'TECN009';
+            break;
+          case 'Autónomo':
+            codeO = 'JEFIYM03';
+            break;
+          default:
+            break;
+        }
+      break;
+
+      case 'Empaques especiales (CEMPA)':
+        codeN = 'M';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = 'ELECT005';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = 'TECN004';
+            break;
+          case 'Autónomo':
+            codeO = 'JEFE_EMP';
+            break;
+          default:
+            break;
+        }
+      break;
+
+      case 'Logística CEDI A':
+        codeN = 'M10';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = 'TECN003';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = 'MECA013';
+            break;
+          case 'Autónomo':
+            codeO = 'JEFECEDI';
+            break;
+          default:
+            break;
+        }
+      break;
+
+      case 'Logística CEDI B':
+        codeN = 'M10';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = 'TECN003';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = 'MECA013';
+            break;
+          case 'Autónomo':
+            codeO = 'JEFECEDI';
+            break;
+          default:
+            break;
+        }
+      break;
       
+      case 'Laboratorio de Calidad':
+        codeN = 'M07';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = 'TECN003';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = '';
+            break;
+          case 'Autónomo':
+            codeO = 'JEFECAL';
+            break;
+          default:
+            break;
+        }
+      break;
+
+      case 'Laboratorio I+D':
+        codeN = 'M';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = 'TECN003';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = 'MECA013';
+            break;
+          case 'Autónomo':
+            codeO = 'LABI&D';
+            break;
+          default:
+            break;
+        }
+      break;
+
+      case 'Edificio Administrativo':
+        codeN = 'M';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = 'TECN003';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = 'MECA013';
+            break;
+          case 'Autónomo':
+            codeO = '';
+            break;
+          default:
+            break;
+        }
+      break;
+
+      case 'Exteriores':
+        codeN = 'M';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = 'TECN003';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = 'MECA013';
+            break;
+          case 'Autónomo':
+            codeO = 'CONTCVIL';
+            break;
+          default:
+            break;
+        }
+      break;
+
+      case 'Plantas de tratamiento de aguas Residuales (PTAR)':
+        codeN = 'M';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = 'TECN003';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = 'MECA013';
+            break;
+          case 'Autónomo':
+            codeO = 'JEFEGAMB';
+            break;
+          default:
+            break;
+        }
+      break;
+
+      case 'Plantas de tratamiento de agua Potable (PTAP)':
+        codeN = 'M';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = 'TECN003';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = 'MECA013';
+            break;
+          case 'Autónomo':
+            codeO = 'JEFEGAMB';
+            break;
+          default:
+            break;
+        }
+      break;
+
+      case 'Bodega de excedentes industriales':
+        codeN = 'M';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = 'TECN003';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = 'MECA013';
+            break;
+          case 'Autónomo':
+            codeO = 'JEFEGAMB';
+            break;
+          default:
+            break;
+        }
+      break;
+
+      case 'Zona de contratistas':
+        codeN = 'M06';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = 'TECN003';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = 'MECA013';
+            break;
+          case 'Autónomo':
+            codeO = 'CONTCVIL';
+            break;
+          default:
+            break;
+        }
+      break;
+      case 'Portería':
+        codeN = 'M';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = 'TECN003';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = 'MECA013';
+            break;
+          case 'Autónomo':
+            codeO = '';
+            break;
+          default:
+            break;
+        }
+      break;
+
+      case 'Casino':
+        codeN = 'M';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = 'TECN003';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = 'MECA013';
+            break;
+          case 'Autónomo':
+            codeO = '';
+            break;
+          default:
+            break;
+        }
+      break;
+
+      case 'Cuarto de Baterías':
+        codeN = 'M';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = 'TECN003';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = 'MECA013';
+            break;
+          case 'Autónomo':
+            codeO = 'JEFECEDI';
+            break;
+          default:
+            break;
+        }
+      break;
+
+      case 'Cuarto Venta de Empleados':
+        codeN = 'M';
+        switch(valueResponsible) {
+          case 'Tecnico Eléctrico':
+            codeO = 'TECN003';
+            break;
+          case 'Tecnico Mecánico':
+            codeO = 'MECA013';
+            break;
+          case 'Autónomo':
+            codeO = 'JEFECEDI';
+            break;
+          default:
+            break;
+        }
+      break;
 
       default:
         return 'Error_Cod_PG';
