@@ -316,7 +316,7 @@ function assignCodesPG(sheet, row) {
       break;
 
       case 'Edificio Información Manufactura':
-        codeN = 'M';
+        codeN = 'M15';
         switch(valueResponsible) {
           case 'Tecnico Eléctrico':
             codeO = 'TECN003';
@@ -384,7 +384,7 @@ function assignCodesPG(sheet, row) {
       break;
 
       case 'Taller de Mantenimientos':
-        codeN = 'M';
+        codeN = 'M16';
         switch(valueResponsible) {
           case 'Tecnico Eléctrico':
             codeO = '';
@@ -418,7 +418,7 @@ function assignCodesPG(sheet, row) {
       break;
 
       case 'Empaques especiales (CEMPA)':
-        codeN = 'M';
+        codeN = 'M17';
         switch(valueResponsible) {
           case 'Tecnico Eléctrico':
             codeO = 'ELECT005';
@@ -486,7 +486,7 @@ function assignCodesPG(sheet, row) {
       break;
 
       case 'Laboratorio I+D':
-        codeN = 'M';
+        codeN = 'M18';
         switch(valueResponsible) {
           case 'Tecnico Eléctrico':
             codeO = 'TECN003';
@@ -503,7 +503,7 @@ function assignCodesPG(sheet, row) {
       break;
 
       case 'Edificio Administrativo':
-        codeN = 'M';
+        codeN = 'M19';
         switch(valueResponsible) {
           case 'Tecnico Eléctrico':
             codeO = 'TECN003';
@@ -520,7 +520,7 @@ function assignCodesPG(sheet, row) {
       break;
 
       case 'Exteriores':
-        codeN = 'M';
+        codeN = 'M20';
         switch(valueResponsible) {
           case 'Tecnico Eléctrico':
             codeO = 'TECN003';
@@ -537,7 +537,7 @@ function assignCodesPG(sheet, row) {
       break;
 
       case 'Plantas de tratamiento de aguas Residuales (PTAR)':
-        codeN = 'M';
+        codeN = 'M22';
         switch(valueResponsible) {
           case 'Tecnico Eléctrico':
             codeO = 'TECN003';
@@ -554,7 +554,7 @@ function assignCodesPG(sheet, row) {
       break;
 
       case 'Plantas de tratamiento de agua Potable (PTAP)':
-        codeN = 'M';
+        codeN = 'M21';
         switch(valueResponsible) {
           case 'Tecnico Eléctrico':
             codeO = 'TECN003';
@@ -571,7 +571,7 @@ function assignCodesPG(sheet, row) {
       break;
 
       case 'Bodega de excedentes industriales':
-        codeN = 'M';
+        codeN = 'M23';
         switch(valueResponsible) {
           case 'Tecnico Eléctrico':
             codeO = 'TECN003';
@@ -604,7 +604,7 @@ function assignCodesPG(sheet, row) {
         }
       break;
       case 'Portería':
-        codeN = 'M';
+        codeN = 'M24';
         switch(valueResponsible) {
           case 'Tecnico Eléctrico':
             codeO = 'TECN003';
@@ -621,7 +621,7 @@ function assignCodesPG(sheet, row) {
       break;
 
       case 'Casino':
-        codeN = 'M';
+        codeN = 'M25';
         switch(valueResponsible) {
           case 'Tecnico Eléctrico':
             codeO = 'TECN003';
@@ -638,7 +638,7 @@ function assignCodesPG(sheet, row) {
       break;
 
       case 'Cuarto de Baterías':
-        codeN = 'M';
+        codeN = 'M26';
         switch(valueResponsible) {
           case 'Tecnico Eléctrico':
             codeO = 'TECN003';
@@ -655,7 +655,7 @@ function assignCodesPG(sheet, row) {
       break;
 
       case 'Cuarto Venta de Empleados':
-        codeN = 'M';
+        codeN = 'M27';
         switch(valueResponsible) {
           case 'Tecnico Eléctrico':
             codeO = 'TECN003';
