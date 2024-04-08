@@ -12,7 +12,7 @@ function onOpen() {
 //Funcion para Conectarse al Sheet
 function conectionSheets() {
    //Conectar Sheets a AppScript
-  const sheetId = '1pPWE_pS5tNcRabGIIymprfMo2TNWswZKNv5ovOZ95dY'; //1IfbxGR6tHOPCHc0r2oVb5R9B598clH6V5Fh5aNiZKqE Cod Original
+  const sheetId = '1IfbxGR6tHOPCHc0r2oVb5R9B598clH6V5Fh5aNiZKqE'; //1pPWE_pS5tNcRabGIIymprfMo2TNWswZKNv5ovOZ95dY Cod Alterno
   const sheet = SpreadsheetApp.openById(sheetId);
    //Conectar Hojas especificas
   const p_CT_Input_Data = sheet.getSheetByName('CT_Input_Data');
@@ -325,7 +325,7 @@ function assignCodesPG(sheet, row) {
             codeO = 'MECA013';
             break;
           case 'Autónomo':
-            codeO = '';
+            codeO = 'JEFE_EMP';
             break;
           default:
             break;
@@ -373,7 +373,7 @@ function assignCodesPG(sheet, row) {
             codeO = 'ELECT009';
             break;
           case 'Tecnico Mecánico':
-            codeO = '';
+            codeO = 'MECA013';
             break;
           case 'Autónomo':
             codeO = 'METRO001';
@@ -387,13 +387,13 @@ function assignCodesPG(sheet, row) {
         codeN = 'M16';
         switch(valueResponsible) {
           case 'Tecnico Eléctrico':
-            codeO = '';
+            codeO = 'ELECT009';
             break;
           case 'Tecnico Mecánico':
             codeO = 'MECA013';
             break;
           case 'Autónomo':
-            codeO = '';
+            codeO = 'COORING5';
             break;
           default:
             break;
@@ -512,7 +512,7 @@ function assignCodesPG(sheet, row) {
             codeO = 'MECA013';
             break;
           case 'Autónomo':
-            codeO = '';
+            codeO = 'CONTCVIL';
             break;
           default:
             break;
@@ -613,7 +613,7 @@ function assignCodesPG(sheet, row) {
             codeO = 'MECA013';
             break;
           case 'Autónomo':
-            codeO = '';
+            codeO = 'CONTCVIL';
             break;
           default:
             break;
@@ -630,7 +630,7 @@ function assignCodesPG(sheet, row) {
             codeO = 'MECA013';
             break;
           case 'Autónomo':
-            codeO = '';
+            codeO = 'CONTCVIL';
             break;
           default:
             break;
@@ -739,13 +739,13 @@ function assignCodesPriority(sheet, row) {
   let priorityCode = '';
 
   switch (riskType) {
-    case 'A - Alta':
+    case 'A - Alta (3 Días)':
       priorityCode = 'H';
       break;
-    case 'B - Media':
+    case 'B - Media (15 Días)':
       priorityCode = 'L';
       break;
-    case 'C - Baja':
+    case 'C - Baja (30 Días)':
       priorityCode = 'N';
       break;
     default:
