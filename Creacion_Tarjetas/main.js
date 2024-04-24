@@ -1,12 +1,12 @@
 //Funcion para Generar Alertas, Menus Personalizados, etc.
 function onOpen() {
   const ui = SpreadsheetApp.getUi();
-  ui.createMenu('Menú Personalizado')
-    .addItem('Duplicar Datos', 'duplicateData')
-    .addItem('Limpiar Datos de Entrada', 'confirmClearDataEntry')
-    .addItem('Limpiar Datos de Salida', 'confirmClearDataOutput')
-    .addItem('Limpiar Todo', 'cleanAll')
-    .addItem('Convertir Salida a Excel', 'convertToExcel')
+  ui.createMenu('🤖➡ Menú Personalizado')
+    .addItem('📄📄- Duplicar Datos', 'duplicateData')
+    .addItem('➧📁- Limpiar Datos de Entrada', 'confirmClearDataEntry')
+    .addItem('📁➧-Limpiar Datos de Salida', 'confirmClearDataOutput')
+    .addItem('📖- Limpiar Todo', 'cleanAll')
+    .addItem('💾- Convertir Salida a Excel', 'convertToExcel')
     .addToUi();
 }
 //Funcion para Conectarse al Sheet
@@ -149,9 +149,9 @@ function get_Cod_Title(sheet, row) {
     case 'Incidentes ambientales':
       return 'IA';
     case 'Acto Inseguro ambientales':
-      return 'AIA';
+      return 'AI';
     case 'Defecto':
-      return 'DF';
+      return 'DC';
     case 'Acto y/o comportamiento':
       return 'AC';
     case 'Condición de operación':
